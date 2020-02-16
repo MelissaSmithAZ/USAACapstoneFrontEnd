@@ -1,24 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect} from 'react';
 import './App.css';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAllCarNotOnPolicyCheckLists } from './store/CarNotOnPolicyCheckLists/action';
+import { fetchAllClaims } from './store/Claims/action';
+import { fetchAllCoverageCheckLists } from './store/CoverageCheckLists/action';
+import { fetchAllTransportationCheckList } from './store/TransportationCheckLists/action';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter
+} from "react-router-dom";
 
-function App() {
+import Dashboard from "./components/dashboard/Dashboard"
+import AddCarNotOnPolicyCheckList from "./components/carNotOnPolicyCheckLists/AddCarNotOnPolicyCheckList";
+import EditCarNotOnPolicyCheckList from "./components/carNotOnPolicyCheckLists/EditCarNotOnPolicyCheckList";
+import ListOfClaims from "./components/claims/ListOfClaims";
+import AddCoverageCheckList from "./components/coverageCheckLists/AddCoverageCheckList";
+import EditCoverageCheckList from "./components/coverageCheckLists/EditCoverageCheckList";
+import AddTransportationCheckList from "./components/transportationCheckLists/AddTransportationCheckList";
+import EditTransportationCheckList from "./components/transportationCheckLists/EditTransportationCheckList";
+
+
+const App = props => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllCarNotOnPolicyCheckLists());
+    dispatch(fetchAllClaims());
+    dispatch(fetchAllCoverageCheckLists());
+    dispatch(fetchAllTransportationCheckList());
+
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Dashboard />
+        
+        <Route exact path="/" component={ListOfClaims} />
+
+        <Switch>
+          {/* <Route path="" component={AddCarNotOnPolicyCheckList} />
+          <Route path="" component={EditCarNotOnPolicyCheckList} />
+          <Route path="" component={AddCoverageCheckList} />
+          <Route path="" component={EditCoverageCheckList} />
+          <Route path="" component={AddTransportationCheckList} />
+          <Route path="" component={EditTransportationCheckList} /> */}
+        </Switch>
+
+      </Router>
     </div>
   );
 }
