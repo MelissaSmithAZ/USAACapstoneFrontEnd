@@ -20,7 +20,7 @@ import AddCoverageCheckList from "./components/coverageCheckLists/AddCoverageChe
 import EditCoverageCheckList from "./components/coverageCheckLists/EditCoverageCheckList";
 import AddTransportationCheckList from "./components/transportationCheckLists/AddTransportationCheckList";
 import EditTransportationCheckList from "./components/transportationCheckLists/EditTransportationCheckList";
-
+import ClaimView from "./components/claimView/ClaimView"
 
 const App = props => {
   const dispatch = useDispatch();
@@ -35,18 +35,18 @@ const App = props => {
     <div className="App">
       <Router>
         <Dashboard />
-        
-        <Route exact path="/" component={ListOfClaims} />
 
         <Switch>
+          <Route exact path="/" component={ListOfClaims} />
+          <Route path="/claims/:id" component={ClaimView} />
           {/* <Route path="" component={AddCarNotOnPolicyCheckList} />
           <Route path="" component={EditCarNotOnPolicyCheckList} />
           <Route path="" component={AddCoverageCheckList} />
           <Route path="" component={EditCoverageCheckList} />
           <Route path="" component={AddTransportationCheckList} />
+         
           <Route path="" component={EditTransportationCheckList} /> */}
         </Switch>
-
       </Router>
     </div>
   );

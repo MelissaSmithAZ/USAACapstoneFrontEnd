@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import {
-  Container,
+    Container,
+    Table,
   CardBody,
   Input,
   Label,
@@ -24,9 +25,20 @@ const ListOfClaims = props => {
 
     return (
       <div>
-        List of claims
-      {claimsList}
-     
+        {/* <Container> */}
+        <Table>
+          <thead>
+            <tr>
+              <th>Claim Number</th>
+              <th>Member Name</th>
+              <th>Claimant Name</th>
+              <th>Handle</th>
+            </tr>
+          </thead>
+          <tr></tr>
+        </Table>
+        {claimsList}
+        {/* </Container> */}
       </div>
     );
 }
