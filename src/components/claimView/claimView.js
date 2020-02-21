@@ -13,92 +13,153 @@ import {
   Row,
   Col
 } from "reactstrap";
-import ListOfClaims from "../claims/ListOfClaims"
+import ListOfClaims from "../claims/ListOfClaims";
+import { updateClaim } from "../../store/Claims/action";
 
 const ClaimView = props => {
-    const claims = useSelector(state => state.claims.all);
+  // const claims = useSelector(state => state.claims.all);
+  //getter setter
+  const [singleClaimView, setSingleClaimView] = useState({})
+  
+  //   member_name: "",
+  //   phone: "",
+  //   address: "",
+  //   email: "",
+  //   auto_1: "",
+  //   bi_coverage: 0,
+  //   collision_coverage: 0,
+  //   pd_coverage: 0,
+  //   claimant_name: "",
+  //   claimant_phone: "",
+  //   claimant_address: "",
+  //   claimant_email: "",
+  //   claimant_auto: ""
+  // });
+  const claims = useSelector(state => state.claims.all);
+  // let singleClaimView;
+  console.log("CLAIMS", claims)
+  console.log("SINGLE CLAIM", singleClaimView);
+  
+  useEffect(() => {
+    // console.log("useEffect", props.singleClaimView)
+    // setSingleClaimView(props.singleClaimView);
+    setSingleClaimView(claims.find(claim => claim.claim_number === Number(props.match.params.id)))
+  }, [claims]);
+  
+  console.log("SINGLE", props.singleClaimView);
+  
+  return (
+    <div>
+      <Row id="cov-card1">
+        <Col sm={6}>
+          <Card>
+            <CardTitle>
+              <h5>Claim Task Line</h5>
+            </CardTitle>
+            <Button>Research Coverage</Button>
+          </Card>
+        </Col>
+      </Row>
 
-    //getter setter
-    const [singleClaim, setSingleClaim] = useState({
-        member_name: "",
-        member_phone: "",
-        member_address: "",
-        member_email: "",
+      <Row>
+        <Col sm="6">
+          <Card body>
+            <CardTitle>
+              <h3>Insured: </h3>
+            </CardTitle>
+            <CardText>
+              <p>
+                Insured Driver:
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.member_name}
+              </p>
+              <p>
+                Phone Number:{" "}
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.phone}
+              </p>
+              <p>
+                Address:{" "}
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.address}
+              </p>
+              <p>
+                Email:{" "}
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.email}
+              </p>
+              <p>
+                Vehicle:{" "}
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.auto_1}
+              </p>
+            </CardText>
+            <Button>Go somewhere</Button>
+          </Card>
+        </Col>
+        <Col sm="6">
+          <Card body>
+            <CardTitle>
+              <h3>Claimant: </h3>
+            </CardTitle>
+            <CardText>
+              <p>Driver:{singleClaimView && singleClaimView.claimant_name}</p>
+              <p>
+                Phone Number:{singleClaimView && singleClaimView.claimant_phone}
+              </p>
+              <p>
+                Address:{singleClaimView && singleClaimView.claimant_address}
+              </p>
+              <p>Email:{singleClaimView && singleClaimView.claimant_email}</p>
+              <p>Vehicle:{singleClaimView && singleClaimView.claimant_auto}</p>
+            </CardText>
+            <Button>Go somewhere</Button>
+          </Card>
+        </Col>
+      </Row>
 
+      <Row id="cov-card">
+        <Col sm={10}>
+          <Card id="cov-card">
+            <CardTitle>
+              <h3>Coverages</h3>
+            </CardTitle>
+            <CardText>
+              <p>
+                Bodily Injury: $
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.bi_coverage}
+              </p>
+              <p>
+                Collision: $
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.collision_coverage}
+              </p>
+              <p>
+                Property Damage: $
+                {singleClaimView &&
+                  singleClaimView.member &&
+                  singleClaimView.member.pd_coverage}
+              </p>
+            </CardText>
+          </Card>
+        </Col>
+      </Row>
+    </div>
+  );
+};
+const mapStateToProps = (state, props) => {
+  console.log("here", state);
+  return {
+    singleClaimView: state.claims.all.find(claim => claim.claim_number === Number(props.match.params.claim_number))
+  };
+};
 
-
-
-    });
-
-    useEffect(() => {
-        setSingleClaim();
-    }, []);
-console.log("CLAIMS in ClaimView", claims)
-    
-
-    return (
-      <div>
-        <Row id="cov-card1">
-          <Col sm={6}>
-            <Card>
-              <CardTitle>
-                <h5>Claim Task Line</h5>
-              </CardTitle>
-               <Button>Research Coverage</Button>
-            </Card>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col sm="6">
-            <Card body>
-              <CardTitle>
-                <h3>Insured: </h3>
-              </CardTitle>
-              <CardText>
-                <p>Insured Driver:{claims.member_name}</p>
-                <p>Member Number:{claims.phone}</p>
-                <p>Member Address:{claims.member_address}</p>
-                <p>Member Address:{claims.email}</p>
-                <p>Insureds Vehicle:{claims.auto_1}</p>
-              </CardText>
-              <Button>Go somewhere</Button>
-            </Card>
-          </Col>
-          <Col sm="6">
-            <Card body>
-              <CardTitle>
-                <h3>Claimant: </h3>
-              </CardTitle>
-              <CardText>
-                <p>Insured Driver:{claims.claimant_name}</p>
-                <p>Member Number:{claims.claimant_phone}</p>
-                <p>Member Address:{claims.claimant_address}</p>
-                <p>Member Address:{claims.claimant_email}</p>
-                <p>Insureds Vehicle:{claims.claimant_auto}</p>
-              </CardText>
-              <Button>Go somewhere</Button>
-            </Card>
-          </Col>
-        </Row>
-
-        <Row id="cov-card">
-          <Col sm={10}>
-            <Card id="cov-card">
-              <CardTitle>
-                <h3>Coverages</h3>
-              </CardTitle>
-              <CardText>
-                <p>Bodily Injury:{claims.bi_coverage}</p>
-                <p>Collision:{claims.collision_coverage}</p>
-                <p>Property Damage:{claims.pd_coverage}</p>
-              </CardText>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    );
-
-}
-
-export default ClaimView;
+export default withRouter(connect(mapStateToProps, { updateClaim })(ClaimView));
