@@ -2,25 +2,30 @@ import React, { useState, useEffect } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import {
-  Container,
-  CardBody,
   Card,
-  CardImg,
   CardTitle,
   CardText,
-  CardSubtitle,
   Button,
   Row,
   Col
 } from "reactstrap";
-import ListOfClaims from "../claims/ListOfClaims";
 import { updateClaim } from "../../store/Claims/action";
 
 const ClaimView = props => {
   // const claims = useSelector(state => state.claims.all);
   //getter setter
   const [singleClaimView, setSingleClaimView] = useState({})
-  
+
+  // const buttonAddCoverageCheckList = (
+  //   <Button
+  //     onClick={handleSubmit}
+  //   > Add Coverage Check List</Button>
+  // )
+  //  const buttonEditCoverageCheckList = (
+  //   <Button
+  //     onClick={handleSubmit}
+  //   > Edit Coverage Check List</Button>
+  // )
   //   member_name: "",
   //   phone: "",
   //   address: "",
@@ -56,7 +61,22 @@ const ClaimView = props => {
             <CardTitle>
               <h5>Claim Task Line</h5>
             </CardTitle>
-            <Button>Research Coverage</Button>
+
+            {(singleClaimView && singleClaimView.coverageCheckList == null) ||
+            false ? (
+              <Link to={"/addCoverageChecklist"}>
+                {" "}
+                <Button>
+                  Research Coverage
+                </Button>{" "}
+               </Link>
+            ) : (
+              <Link to={"/editCoverageChecklist/:id"}>
+                <Button >
+                  Update Research Coverage
+                </Button>
+              </Link>
+            )}
           </Card>
         </Col>
       </Row>
@@ -156,10 +176,10 @@ const ClaimView = props => {
   );
 };
 const mapStateToProps = (state, props) => {
-  console.log("here", state);
-  return {
-    singleClaimView: state.claims.all.find(claim => claim.claim_number === Number(props.match.params.claim_number))
-  };
+  // console.log("here", state);
+  // return {
+  //   singleClaimView: state.claims.all.find(claim => claim.claim_number === Number(props.match.params.claim_number))
+  // };
 };
 
 export default withRouter(connect(mapStateToProps, { updateClaim })(ClaimView));

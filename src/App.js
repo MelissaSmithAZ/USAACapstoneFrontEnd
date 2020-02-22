@@ -39,6 +39,10 @@ const App = props => {
         <Switch>
           <Route exact path="/" component={ListOfClaims} />
           <Route path="/claims/:id" component={ClaimView} />
+          {/* <Route path="/coverageCheckList/:id" component={CoverageCheckList} /> */}
+          <Route path="/addCoverageCheckList" component={AddCoverageCheckList} />
+          <Route path="/editCoverageCheckList/:id" component={EditCoverageCheckList} />
+          
           {/* <Route path="" component={AddCarNotOnPolicyCheckList} />
           <Route path="" component={EditCarNotOnPolicyCheckList} />
           <Route path="" component={AddCoverageCheckList} />
