@@ -16,30 +16,7 @@ const ClaimView = props => {
   //getter setter
   const [singleClaimView, setSingleClaimView] = useState({})
 
-  // const buttonAddCoverageCheckList = (
-  //   <Button
-  //     onClick={handleSubmit}
-  //   > Add Coverage Check List</Button>
-  // )
-  //  const buttonEditCoverageCheckList = (
-  //   <Button
-  //     onClick={handleSubmit}
-  //   > Edit Coverage Check List</Button>
-  // )
-  //   member_name: "",
-  //   phone: "",
-  //   address: "",
-  //   email: "",
-  //   auto_1: "",
-  //   bi_coverage: 0,
-  //   collision_coverage: 0,
-  //   pd_coverage: 0,
-  //   claimant_name: "",
-  //   claimant_phone: "",
-  //   claimant_address: "",
-  //   claimant_email: "",
-  //   claimant_auto: ""
-  // });
+ 
   const claims = useSelector(state => state.claims.all);
   // let singleClaimView;
   console.log("CLAIMS", claims)
@@ -51,7 +28,6 @@ const ClaimView = props => {
     setSingleClaimView(claims.find(claim => claim.claim_number === Number(props.match.params.id)))
   }, [claims]);
   
-  console.log("SINGLE", props.singleClaimView);
   
   return (
     <div>
@@ -66,15 +42,11 @@ const ClaimView = props => {
             false ? (
               <Link to={"/addCoverageChecklist"}>
                 {" "}
-                <Button>
-                  Research Coverage
-                </Button>{" "}
-               </Link>
+                <Button>Research Coverage</Button>{" "}
+              </Link>
             ) : (
-              <Link to={"/editCoverageChecklist/:id"}>
-                <Button >
-                  Update Research Coverage
-                </Button>
+              <Link to={`/editCoverageChecklist/${singleClaimView && singleClaimView.claim_number}`}>
+                <Button>Update Research Coverage</Button>
               </Link>
             )}
           </Card>
