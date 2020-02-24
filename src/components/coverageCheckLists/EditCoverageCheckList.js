@@ -3,8 +3,8 @@ import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { updateClaim } from "../../store/Claims/action";
 import { updateCoverageCheckList } from "../../store/CoverageCheckLists/action";
-import { CustomInput, FormGroup, Label, Input, Button } from "reactstrap";
-import { Form } from 'react-bootstrap';
+import { CustomInput, FormGroup, Label, Input, Button, Form } from "reactstrap";
+// import { Form } from 'react-bootstrap';
 
 const EditCoverageCheckList = props => {
   const [singleClaimView, setSingleClaimView] = useState({});
@@ -38,7 +38,44 @@ const EditCoverageCheckList = props => {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <Form.Check disabled type={"checkbox"} label={"Limits"} />
+        <FormGroup disabled check>
+          <Input type="checkbox" name="check" id="exampleCheck" />
+          <Label for="exampleCheck" check>
+            Limits
+          </Label>
+        </FormGroup>
+
+        {singleClaimView &&
+        singleClaimView.coverageCheckList &&
+        singleClaimView.coverageCheckList.carNotOnPolicy ? (
+          <Link>Test Owned Vehicle</Link>
+        ) : (
+          <FormGroup check>
+            <Input type="checkbox" name="check" id="exampleCheck" />
+            <Label for="exampleCheck" check>
+              None Owned Vehicle
+            </Label>
+          </FormGroup>
+        )}
+        <FormGroup check>
+          <Input
+            type="checkbox"
+            // checked={
+            //   singleClaimView &&
+            //   singleClaimView.coverageCheckList &&
+            //   singleClaimView.coverageCheckList.transportation === true
+            // }
+                      
+            // value={checked}
+            name="transportation"
+            onChange={handleEditTransportation}
+          />
+          <Label for="transportation" check>
+            Transportation
+          </Label>
+        </FormGroup>
+
+        {/* <Form.Check disabled type={"checkbox"} label={"Limits"} />
 
         {singleClaimView &&
         singleClaimView.coverageCheckList &&
@@ -58,7 +95,7 @@ const EditCoverageCheckList = props => {
             label={"Transportation"}
             onChange={handleEditTransportation}
           />
-        )}
+        )} */}
 
         {/* {singleClaimView && */}
 

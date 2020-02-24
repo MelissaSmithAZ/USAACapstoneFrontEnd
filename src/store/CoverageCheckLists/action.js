@@ -60,17 +60,16 @@ export const updateCoverageCheckList = (
   id
 ) => async dispatch => {
   console.log("*****UPDATED CoverageCheckList ACTION", updatedCoverageCheckList);
-  //give me an object that has everything other than pets that is called cust
-  // let {pets, ...cust } = updatedCustomer
+
   dispatch({
     type: types.UPDATE_COVERAGECHECKLIST_PENDING
   });
   try {
     let response = await axios.patch(BASE_URL, updatedCoverageCheckList);
-  console.log(
-    "*****UPDATED CoverageCheckList ACTION",
-    updatedCoverageCheckList
-  );
+  // console.log(
+  //   "*****UPDATED CoverageCheckList ACTION",
+  //   updatedCoverageCheckList
+  // );
 
     dispatch({
       type: types.UPDATE_COVERAGECHECKLIST_SUCCESS,
