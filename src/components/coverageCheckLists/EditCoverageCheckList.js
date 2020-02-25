@@ -2,42 +2,46 @@ import React, { useState, useEffect } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { updateClaim } from "../../store/Claims/action";
-import { updateCoverageCheckList } from "../../store/CoverageCheckLists/action";
+import {
+  updateCoverageCheckList,
+  fetchOneCoverageCheckList,
+  fetchAllCoverageCheckLists
+} from "../../store/CoverageCheckLists/action";
 import { CustomInput, FormGroup, Label, Input, Button, Form } from "reactstrap";
 // import { Form } from 'react-bootstrap';
 
 const EditCoverageCheckList = props => {
-  const [singleClaimView, setSingleClaimView] = useState({});
-  //   const [name, setName] = useState()
+  //we are retuning an array and we only have one so we want [0]
+  const theClaim = useSelector(
+    state =>
+      state.claims.filter(
+        claim => claim.id == props.match.params.claim_number
+      )[0]
+  );
+  const coverageCheckList = theClaim.coverageCheckList;
 
-  const claims = useSelector(state => state.claims.all);
+  const [singleCoverageCheckList, setCoverageCheckList] = useState({});
 
-  useEffect(() => {
-    // console.log("useEffect", props.singleClaimView)
-    // setSingleClaimView(props.singleClaimView);
-    setSingleClaimView(
-      claims.find(claim => claim.claim_number === Number(props.match.params.id))
-    );
-  }, [claims]);
-  console.log("**coverage**", claims);
-  console.log("**coverage singleClaim**", singleClaimView);
+  console.log("CoverageCheckList", coverageCheckList);
+
   const handleSubmit = e => {
     e.preventDefault();
-    props.updateCoverageCheckList(singleClaimView);
+    // updateCoverageCheckList(coverageCheckList);
   };
+
+  console.log("CoverageCheckList", props.coverageChecklist);
+
   function handleEditTransportation(e) {
     const { name, value } = e.target;
-    setSingleClaimView({
-      ...singleClaimView,
-      coverageCheckList: {
-        ...singleClaimView.coverageCheckList,
-        transportation: value
-      }
+    setCoverageCheckList({
+      transportation: value
     });
   }
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
+        <p>Coverage Check list </p>
         <FormGroup disabled check>
           <Input type="checkbox" name="check" id="exampleCheck" />
           <Label for="exampleCheck" check>
@@ -45,9 +49,7 @@ const EditCoverageCheckList = props => {
           </Label>
         </FormGroup>
 
-        {singleClaimView &&
-        singleClaimView.coverageCheckList &&
-        singleClaimView.coverageCheckList.carNotOnPolicy ? (
+        {coverageCheckList && coverageCheckList.carNotOnPolicy ? (
           <Link>Test Owned Vehicle</Link>
         ) : (
           <FormGroup check>
@@ -57,77 +59,15 @@ const EditCoverageCheckList = props => {
             </Label>
           </FormGroup>
         )}
-        <FormGroup check>
-          <Input
-            type="checkbox"
-            // checked={
-            //   singleClaimView &&
-            //   singleClaimView.coverageCheckList &&
-            //   singleClaimView.coverageCheckList.transportation === true
-            // }
-                      
-            // value={checked}
-            name="transportation"
-            onChange={handleEditTransportation}
-          />
-          <Label for="transportation" check>
-            Transportation
-          </Label>
-        </FormGroup>
-
-        {/* <Form.Check disabled type={"checkbox"} label={"Limits"} />
-
-        {singleClaimView &&
-        singleClaimView.coverageCheckList &&
-        singleClaimView.coverageCheckList.carNotOnPolicy ? (
-          <Link>Test Owned Vehicle</Link>
-        ) : (
-          <Form.Check type={"checkbox"} label={"None Owned Vehicle"} />
-        )}
-
-        {singleClaimView &&
-        singleClaimView.coverageCheckList &&
-        singleClaimView.coverageCheckList.transportation ? (
-          <Link>Test transportation Vehicle</Link>
+        {coverageCheckList && coverageCheckList.transportation ? (
+          <Link>Test transportation</Link>
         ) : (
           <Form.Check
             type={"checkbox"}
             label={"Transportation"}
             onChange={handleEditTransportation}
           />
-        )} */}
-
-        {/* {singleClaimView && */}
-
-        {/* singleClaimView.coverageCheckList &&
-        singleClaimView.coverageCheckList.carNotOnPolicy ? (
-         <Link>Test Owned Vehicle</Link>
-        ) : (
-        <Input */}
-        {/* type="checkbox"
-        id="exampleCustomCheckbox2"
-        label="None Owned Vehicle"
-         value={ */}
-        {/* singleClaimView &&
-        singleClaimView.coverageCheckList &&
-        singleClaimView.coverageCheckList.carNotOnPolicy
-        }
-              onChange={handleEdit}
-        /> */}
-
-        {/* <Input
-            type="checkbox"
-            id="exampleCustomCheckbox3"
-            label="Transportation Exclusion"
-            name=""
-            value={
-              singleClaimView &&
-              singleClaimView.coverageCheckList &&
-              singleClaimView.coverageCheckList.transportation
-            }
-            onChange={handleEditTransportation}
-          /> */}
-        {/* </FormGroup> */}
+        )}
         <p>
           {" "}
           <Button>Submit</Button> <Button>Close</Button>
@@ -139,6 +79,9 @@ const EditCoverageCheckList = props => {
   );
 };
 
-export default connect(null, { updateClaim, updateCoverageCheckList })(
-  withRouter(EditCoverageCheckList)
-);
+export default connect(null, {
+  updateClaim,
+  updateCoverageCheckList,
+  fetchOneCoverageCheckList,
+  fetchAllCoverageCheckLists
+})(withRouter(EditCoverageCheckList));
