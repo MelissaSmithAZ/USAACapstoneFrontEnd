@@ -66,7 +66,8 @@ export const updateCoverageCheckList = (
   });
   try {
     let response = await axios.patch(BASE_URL, updatedCoverageCheckList);
-  // console.log(
+    // console.log(
+      console.log("here")
   //   "*****UPDATED CoverageCheckList ACTION",
   //   updatedCoverageCheckList
   // );
