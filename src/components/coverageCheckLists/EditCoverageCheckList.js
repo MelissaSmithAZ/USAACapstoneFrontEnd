@@ -30,21 +30,22 @@ import { Form } from "react-bootstrap";
 
 const EditCoverageCheckList = props => {
   // const dispatch = useDispatch()
-  const [singleClaimView, setSingleClaimView] = useState({
-    coverageCheckList: {}
-  });
-  const [transportationIsIssue, setTransportationIsIssue] = useState();
-  const [carNotOnPolicyIsIssue, setcarNotOnPolicyIsIssue] = useState();
+  // const [theClaim, setTheClaim] = useState({
+  //   coverageCheckList: {}
+  // });
+  // const [transportationIsIssue, setTransportationIsIssue] = useState();
+  // const [carNotOnPolicyIsIssue, setcarNotOnPolicyIsIssue] = useState();
 
   //   const [name, setName] = useState()
-
+    const transportationCheckList = useSelector(state => state.transportationCheckList.all)
+  const carNotOnPolicyCheckList = useSelector(state => state.transportationCheckList.all)
   const claims = useSelector(state => state.claims.all);
 
-  useEffect(() => {
-    setSingleClaimView(
-      claims.find(claim => claim.claim_number === Number(props.match.params.id))
-    );
-  }, [claims]);
+  // useEffect(() => {
+  // const  theClaim =(
+  //     claims.find(claim => claim.claim_number === Number(props.match.params.id))
+  //   );
+  // }, [claims]);
 
   // useEffect(() => {
   //   console.log("SCV: ", singleClaimView)
@@ -53,24 +54,24 @@ const EditCoverageCheckList = props => {
   // }, [singleClaimView]);
 
   // setCheckList(singleClaimView.coverageCheckList);
-  console.log("**coverage**", claims);
-  console.log("claim*****", singleClaimView);
-  console.log("Transporation", transportationIsIssue);
-  console.log("policy", carNotOnPolicyIsIssue);
+  // console.log("**coverage**", claims);
+  // console.log("claim*****", singleClaimView);
+  // console.log("Transporation", transportationIsIssue);
+  // console.log("policy", carNotOnPolicyIsIssue);
 
   function handleEdit(e) {
     e.preventDefault();
 
     // const { name, value } = e.target;
 
-    props.updateCoverageCheckList({
-      id: singleClaimView.coverageCheckList.id,
-      transportation: transportationIsIssue,
-      limits: false,
-      carNotOnPolicy: carNotOnPolicyIsIssue,
-      ror: false,
-      claim: null
-    });
+    // props.updateCoverageCheckList({
+    //   id: singleClaimView.coverageCheckList.id,
+    //   transportation: transportationIsIssue,
+    //   limits: false,
+    //   carNotOnPolicy: carNotOnPolicyIsIssue,
+    //   ror: false,
+    //   claim: null
+    // });
 
     // const change
     // setCheckList({
@@ -83,10 +84,10 @@ const EditCoverageCheckList = props => {
     // });
   }
 
-  if (singleClaimView && singleClaimView.coverageCheckList) {
+  // if (singleClaimView && singleClaimView.coverageCheckList) {
     return (
       <div>
-        <Form onSubmit={handleEdit}>
+        {/* <Form onSubmit={handleEdit}>
           <Form.Check
             disabled
             type={"checkbox"}
@@ -97,26 +98,27 @@ const EditCoverageCheckList = props => {
           {
             carNotOnPolicyIsIssue ? (
               <Link>Test Owned Vehicle</Link>
-            ) : (
-                <Form.Check
-                  type="checkbox"
-                  label="None Owned Vehicle"
-                  onChange={e => setcarNotOnPolicyIsIssue(e.target.value)}
-                  value={carNotOnPolicyIsIssue}
-                />
-              )}
+            ) : ( */}
+        {/* //       <Form.Check */}
+        
+          {/* //         type="checkbox"
+          //         label="None Owned Vehicle"
+          //         onChange={e => setcarNotOnPolicyIsIssue(e.target.value)}
+          //         value={carNotOnPolicyIsIssue}
+          //       />
+          //     )}
 
-          {
-            transportationIsIssue ? (
-              <Link>Test transportation Vehicle</Link>
-            ) : (
-                <Form.Check
-                  type="checkbox"
-                  label={"transportation"}
-                  onChange={e => setTransportationIsIssue(e.target.value)}
-                  value={transportationIsIssue}
-                />
-              )}
+          // { */}
+            {/* // transportationIsIssue ? (
+            //   <Link>Test transportation Vehicle</Link>
+            // ) : (
+            //     <Form.Check */}
+            {/* //       type="checkbox"
+            //       label={"transportation"}
+            //       onChange={e => setTransportationIsIssue(e.target.value)}
+            //       value={transportationIsIssue}
+            //     />
+            //   )} */}
 
           {/* {singleClaimView && */}
 
@@ -149,18 +151,18 @@ const EditCoverageCheckList = props => {
             onChange={handleEditTransportation}
           /> */}
           {/* </FormGroup> */}
-          <p>
+          {/* <p>
             {" "}
             <Button>Submit</Button> <Button>Close</Button>
           </p>
-        </Form>
+        </Form> */}
       </div>
 
       //
     );
-  } else {
-    return <div>Loading...</div>
-  }
+  // } else {
+  //   return <div>Loading...</div>
+  // }
   
 };
 //connect takes two arguments mapstatetoprops and mapdispatchtoprops if no mapstate than null mapdispatch allows you to bind to the dispatch  method

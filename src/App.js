@@ -41,7 +41,8 @@ const App = props => {
           <Route path="/claims/:id" component={ClaimView} />
           {/* <Route path="/coverageCheckList/:id" component={CoverageCheckList} /> */}
           <Route path="/addCoverageCheckList" component={AddCoverageCheckList} />
-          <Route path="/editCoverageCheckList/:id" component={EditCoverageCheckList} />
+          <Route path="/editTransportationCheckList/:id" component={EditTransportationCheckList} />
+          <Route path="/addTransportationCheckList" component={AddTransportationCheckList} />
           
           {/* <Route path="" component={AddCarNotOnPolicyCheckList} />
           <Route path="" component={EditCarNotOnPolicyCheckList} />

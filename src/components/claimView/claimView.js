@@ -1,34 +1,102 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
-import {
-  Card,
-  CardTitle,
-  CardText,
-  Button,
-  Row,
-  Col
-} from "reactstrap";
+import { Card, CardTitle, CardText, Button, Row, Col } from "reactstrap";
 import { updateClaim } from "../../store/Claims/action";
+import { fetchAllTransportationCheckList } from "../../store/TransportationCheckLists/action";
+import { fetchAllCarNotOnPolicyCheckLists } from "../../store/CarNotOnPolicyCheckLists/action";
 
 const ClaimView = props => {
   // const claims = useSelector(state => state.claims.all);
   //getter setter
-  const [singleClaimView, setSingleClaimView] = useState({})
+  const [singleClaimView, setSingleClaimView] = useState({});
+  const [theTransportationCheckList, setTheTransportationCheckList] = useState(
+    {}
+  );
+  const [theCarNotOnPolicyCheckList, setTheCarNotOnPolicyCheckList] = useState(
+    {}
+  );
 
- 
   const claims = useSelector(state => state.claims.all);
+  const transportationCheckList = useSelector(
+    state => state.transportationCheckLists.all
+  );
+  const carNotOnPolicyCheckList = useSelector(
+    state => state.carNotOnPolicyCheckLists.all
+  );
+
   // let singleClaimView;
-  console.log("CLAIMS", claims)
-  console.log("SINGLE CLAIM", singleClaimView);
-  
+  console.log("CLAIMS", claims);
+
+  // setTimeout(() => {
+  //   console.log("**TransportationCheckList", transportationCheckList);
+  // }, 4000)
+
   useEffect(() => {
     // console.log("useEffect", props.singleClaimView)
     // setSingleClaimView(props.singleClaimView);
-    setSingleClaimView(claims.find(claim => claim.claim_number === Number(props.match.params.id)))
+    setSingleClaimView(
+      claims.find(claim => claim.claim_number === Number(props.match.params.id))
+    );
   }, [claims]);
-  
-  
+  console.log("SINGLE CLAIM", singleClaimView);
+
+  useEffect(() => {
+    // console.log("useEffect", props.singleClaimView)
+    // setSingleClaimView(props.singleClaimView);
+    setTheTransportationCheckList(
+      transportationCheckList.find(cl => cl.claim.id === singleClaimView.id)
+    );
+  }, [singleClaimView, transportationCheckList]);
+
+  useEffect(() => {
+    // console.log("useEffect", props.singleClaimView)
+    // setSingleClaimView(props.singleClaimView);
+    setTheCarNotOnPolicyCheckList(
+      carNotOnPolicyCheckList.find(cl => cl.claim.id === singleClaimView.id)
+    );
+  }, [singleClaimView,carNotOnPolicyCheckList]);
+
+  // const LinkTransporationEdit = (transportationCheckList.claim === singleClaimView.id)
+
+  const renderLinkTransportation = () => {
+    console.log(theTransportationCheckList, "|||", singleClaimView);
+    if (
+      theTransportationCheckList &&
+      theTransportationCheckList.claim &&
+      singleClaimView
+    ) {
+      if (theTransportationCheckList.claim.id === singleClaimView.id) {
+        return (
+          <Link to={"/EditTransportationCheckList"}>Edit Transportation</Link>
+        )
+      }
+    } else {
+      return (
+        <Link to={"/AddTransportationCheckList"}>add Transportation</Link>
+      );
+    }
+  };
+
+  const renderLinkCarNotOnPolicy = () => {
+    console.log(theTransportationCheckList, "|||", singleClaimView);
+    if (
+      theTransportationCheckList &&
+      theTransportationCheckList.claim &&
+      singleClaimView
+    ) {
+      if (theTransportationCheckList.claim.id === singleClaimView.id) {
+        return (
+          <Link to={"/EditTransportationCheckList"}>Edit Transportation</Link>
+        )
+      }
+    } else {
+      return (
+        <Link to={"/AddTransportationCheckList"}>add Transportation</Link>
+      );
+    }
+  };
+
   return (
     <div>
       <Row id="cov-card1">
@@ -38,17 +106,8 @@ const ClaimView = props => {
               <h5>Claim Task Line</h5>
             </CardTitle>
 
-            {(singleClaimView && singleClaimView.coverageCheckList == null) ||
-            false ? (
-              <Link to={"/addCoverageChecklist"}>
-                {" "}
-                <Button>Research Coverage</Button>{" "}
-              </Link>
-            ) : (
-              <Link to={`/editCoverageChecklist/${singleClaimView && singleClaimView.claim_number}`}>
-                <Button>Update Research Coverage</Button>
-              </Link>
-            )}
+            {renderLinkTransportation()}
+            
           </Card>
         </Col>
       </Row>
@@ -154,4 +213,8 @@ const mapStateToProps = (state, props) => {
   // };
 };
 
-export default withRouter(connect(mapStateToProps, { updateClaim })(ClaimView));
+export default withRouter(
+  connect(mapStateToProps, { updateClaim, fetchAllTransportationCheckList, fetchAllCarNotOnPolicyCheckLists })(
+    ClaimView
+  )
+);
