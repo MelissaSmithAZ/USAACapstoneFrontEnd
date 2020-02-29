@@ -28,7 +28,7 @@ const ClaimView = props => {
     state => state.carNotOnPolicyCheckLists.all
   );
 
-  console.log("CLAIMS", claims);
+  // console.log("CLAIMS", claims);
 
   useEffect(() => {
     // console.log("useEffect", props.singleClaimView)
@@ -38,7 +38,7 @@ const ClaimView = props => {
     );
   }, [claims]);
 
-  console.log("SINGLE CLAIM******", singleClaimView);
+  // console.log("SINGLE CLAIM******", singleClaimView);
 
   useEffect(() => {
     // console.log("useEffect", props.singleClaimView)
@@ -67,16 +67,18 @@ const ClaimView = props => {
     ) {
       if (theTransportationCheckList.claim.id === singleClaimView.id) {
         return (
-          <Link to={"/editTransportationCheckList"}>Edit Transportation</Link>
+          <Link to={`/editTransportationCheckList/${theTransportationCheckList.id}`}>Edit Transportation</Link>
         )
+              // <Link to={`/claims/${props.claim.claim_number}`}><th scope="row">
       }
     } else {
       return (
         <Link to={"/addTransportationCheckList"}>add Transportation</Link>
       );
     }
+    
   };
-// console.log("car")
+
   const renderLinkCarNotOnPolicy = () => {
     console.log(theCarNotOnPolicyCheckList, "|||", singleClaimView);
     if (
