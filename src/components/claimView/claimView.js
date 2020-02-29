@@ -10,6 +10,7 @@ const ClaimView = props => {
   // const claims = useSelector(state => state.claims.all);
   //getter setter
   const [singleClaimView, setSingleClaimView] = useState({});
+
   const [theTransportationCheckList, setTheTransportationCheckList] = useState(
     {}
   );
@@ -18,19 +19,16 @@ const ClaimView = props => {
   );
 
   const claims = useSelector(state => state.claims.all);
+
   const transportationCheckList = useSelector(
     state => state.transportationCheckLists.all
   );
+
   const carNotOnPolicyCheckList = useSelector(
     state => state.carNotOnPolicyCheckLists.all
   );
 
-  // let singleClaimView;
   console.log("CLAIMS", claims);
-
-  // setTimeout(() => {
-  //   console.log("**TransportationCheckList", transportationCheckList);
-  // }, 4000)
 
   useEffect(() => {
     // console.log("useEffect", props.singleClaimView)
@@ -39,7 +37,8 @@ const ClaimView = props => {
       claims.find(claim => claim.claim_number === Number(props.match.params.id))
     );
   }, [claims]);
-  console.log("SINGLE CLAIM", singleClaimView);
+
+  console.log("SINGLE CLAIM******", singleClaimView);
 
   useEffect(() => {
     // console.log("useEffect", props.singleClaimView)
@@ -47,15 +46,15 @@ const ClaimView = props => {
     setTheTransportationCheckList(
       transportationCheckList.find(cl => cl.claim.id === singleClaimView.id)
     );
-  }, [singleClaimView, transportationCheckList]);
+  }, [theTransportationCheckList]);
 
   useEffect(() => {
-    // console.log("useEffect", props.singleClaimView)
+    console.log("useEffect", props.singleClaimView)
     // setSingleClaimView(props.singleClaimView);
     setTheCarNotOnPolicyCheckList(
       carNotOnPolicyCheckList.find(cl => cl.claim.id === singleClaimView.id)
     );
-  }, [singleClaimView,carNotOnPolicyCheckList]);
+  }, [theCarNotOnPolicyCheckList]);
 
   // const LinkTransporationEdit = (transportationCheckList.claim === singleClaimView.id)
 
@@ -68,31 +67,31 @@ const ClaimView = props => {
     ) {
       if (theTransportationCheckList.claim.id === singleClaimView.id) {
         return (
-          <Link to={"/EditTransportationCheckList"}>Edit Transportation</Link>
+          <Link to={"/editTransportationCheckList"}>Edit Transportation</Link>
         )
       }
     } else {
       return (
-        <Link to={"/AddTransportationCheckList"}>add Transportation</Link>
+        <Link to={"/addTransportationCheckList"}>add Transportation</Link>
       );
     }
   };
-
+// console.log("car")
   const renderLinkCarNotOnPolicy = () => {
-    console.log(theTransportationCheckList, "|||", singleClaimView);
+    console.log(theCarNotOnPolicyCheckList, "|||", singleClaimView);
     if (
-      theTransportationCheckList &&
-      theTransportationCheckList.claim &&
+      theCarNotOnPolicyCheckList &&
+      theCarNotOnPolicyCheckList.claim &&
       singleClaimView
     ) {
-      if (theTransportationCheckList.claim.id === singleClaimView.id) {
+      if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id) {
         return (
-          <Link to={"/EditTransportationCheckList"}>Edit Transportation</Link>
+          <Link to={"/editCarNotOnPolicyCheckList"}>Edit NOV</Link>
         )
       }
     } else {
       return (
-        <Link to={"/AddTransportationCheckList"}>add Transportation</Link>
+        <Link to={"/addCarNotOnPolicyCheckList"}>add NOV</Link>
       );
     }
   };
@@ -107,6 +106,8 @@ const ClaimView = props => {
             </CardTitle>
 
             {renderLinkTransportation()}
+            {renderLinkCarNotOnPolicy()}
+
             
           </Card>
         </Col>

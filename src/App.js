@@ -43,6 +43,9 @@ const App = props => {
           <Route path="/addCoverageCheckList" component={AddCoverageCheckList} />
           <Route path="/editTransportationCheckList/:id" component={EditTransportationCheckList} />
           <Route path="/addTransportationCheckList" component={AddTransportationCheckList} />
+          <Route path="/editCarNotOnPolicyCheckList/:id" component={EditCarNotOnPolicyCheckList} />
+          <Route path="/addCarNotOnPolicyCheckList" component={AddCarNotOnPolicyCheckList} />
+
           
           {/* <Route path="" component={AddCarNotOnPolicyCheckList} />
           <Route path="" component={EditCarNotOnPolicyCheckList} />
