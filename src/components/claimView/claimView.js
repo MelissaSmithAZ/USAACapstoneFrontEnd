@@ -88,7 +88,7 @@ const ClaimView = props => {
     ) {
       if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id) {
         return (
-          <Link to={"/editCarNotOnPolicyCheckList"}>Edit NOV</Link>
+          <Link to={`/editCarNotOnPolicyCheckList/${theCarNotOnPolicyCheckList.id}`}>Edit NOV</Link>
         )
       }
     } else {

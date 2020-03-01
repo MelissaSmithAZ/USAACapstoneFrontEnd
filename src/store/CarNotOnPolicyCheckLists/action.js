@@ -57,12 +57,16 @@ export const updateCarNotOnPolicyCkList = (
   updatedCarNotOnPolicyCkList,
   id
 ) => async dispatch => {
+  console.log(
+    "**UPDATED Carnot on policy tACTION",
+   updatedCarNotOnPolicyCkList
+  );
   dispatch({
     type: types.UPDATE_CARNOTONPOLICYCKLIST_PENDING
   });
   try {
     let response = await axios.patch(
-      BASE_URL + `/${id}`,
+      BASE_URL + `/${updatedCarNotOnPolicyCkList.claim_id}`,
       updatedCarNotOnPolicyCkList
     );
     dispatch({

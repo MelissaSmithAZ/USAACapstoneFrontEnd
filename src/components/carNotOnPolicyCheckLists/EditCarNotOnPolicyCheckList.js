@@ -13,6 +13,7 @@ import {
 } from "reactstrap";
 
 const EditCarNotOnPolicyCheckList = props => {
+    
   const [singleClaimView, setSingleClaimView] = useState({});
   const [theCallMember, setTheCallMember] = useState(false);
   const [theCallDoc, setTheCallDoc] = useState("");
@@ -24,17 +25,17 @@ const EditCarNotOnPolicyCheckList = props => {
   const [theCoverageDecision, setTheCoverageDecision] = useState(false);
 
   const [theCarNotOnPolicyCheckList, setTheCarNotOnPolicyCheckList] = useState(
-    {}
-  );
+    {});
 
   const carNotOnPolicyCheckList = useSelector(
     state => state.carNotOnPolicyCheckLists.all
   );
+  console.log("**CarNotOnPolicy", carNotOnPolicyCheckList)
 
   useEffect(() => {
     setTheCarNotOnPolicyCheckList(
       carNotOnPolicyCheckList.find(
-        ck => ck.id === Number(props.match.params.id)
+        cl => cl.id === Number(props.match.params.id)
       ),
       setTheCallMember(theCarNotOnPolicyCheckList.call_member),
       setTheCallDoc(theCarNotOnPolicyCheckList.call_doc),
@@ -46,7 +47,10 @@ const EditCarNotOnPolicyCheckList = props => {
       setTheCoverageDecision(theCarNotOnPolicyCheckList.coverage_decision)
     );
   }, [theCarNotOnPolicyCheckList]);
-
+      
+      
+      
+  console.log("CALL MEMBER TEST", theCarNotOnPolicyCheckList)
   const handleSubmit = e => {
     e.prevmentDefault();
     props.updateCarNotOnPolicyCheckList({
@@ -82,6 +86,121 @@ const EditCarNotOnPolicyCheckList = props => {
               Member Called
             </Label>
           </FormGroup>
+        </Col>
+      </FormGroup>
+      <p>Call Doc must cover: x,y,z</p>
+
+      <FormGroup row>
+        <Label for="exampleText" sm={2}>
+          Member Call Doc
+        </Label>
+        <Col sm={10}>
+          <Input
+            type="textarea"
+            id="exampleText"
+            name="call_doc"
+            value={theCallDoc}
+            onChange={(e) => setTheCallDoc(e.target.value)}
+          />
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="checkbox2" sm={2}>
+          Rental Agreement
+        </Label>
+        <Col sm={{ size: 10 }}>
+          <FormGroup check>
+            <Label check>
+              <Input
+                type="checkbox"
+                id="checkbox2"
+                name="rental_agreement"
+                onChange={() => setTheRentalAgreement(!theRentalAgreement)}
+                checked={theRentalAgreement}
+              />{" "}
+              Rental Agreement
+            </Label>
+          </FormGroup>
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="checkbox2" sm={2}>
+          Claimant Called
+        </Label>
+        <Col sm={{ size: 10 }}>
+          <FormGroup check>
+            <Label check>
+              <Input
+                type="checkbox"
+                id="checkbox2"
+                name="claimant_call"
+                onChange={() => setTheClaimantCall(!theClaimantCall)}
+                checked={theClaimantCall}
+              />{" "}
+              Claimant Called
+            </Label>
+          </FormGroup>
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="checkbox2" sm={2}>
+          Claimant Call Doc 
+        </Label>
+        <Col sm={{ size: 10 }}>
+          <FormGroup check>
+            <Label check>
+              <Input
+                type="checkbox"
+                id="checkbox2"
+                name="claimant_call"
+                onChange={() => setTheClaimantCallDoc(!theClaimantCallDoc)}
+                checked={theClaimantCallDoc}
+              />{" "}
+              Doc claimant call 
+            </Label>
+          </FormGroup>
+        </Col>
+      </FormGroup>
+         <FormGroup row>
+        <Label for="checkbox2" sm={2}>
+          Initial Claimant Leter
+        </Label>
+        <Col sm={{ size: 10 }}>
+          <FormGroup check>
+            <Label check>
+              <Input
+                type="checkbox"
+                id="checkbox2"
+                name="claimant_letter"
+                checked={theFinalLetterMember}
+                onChange={() => setTheFinalLetterMember(!theFinalLetterMember)}
+              />{" "}
+              <Link>Send Decision Letter</Link>
+            </Label>
+          </FormGroup>
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="exampleSelect" sm={2}>
+          Select
+        </Label>
+        <Col sm={10}>
+          <Input
+            type="select"
+            id="exampleSelect"
+            name="coverage_decision"
+            onChange={(e) => setTheCoverageDecision(e.target.value)}
+          >
+            <option>choose Coverage Decision</option>
+            <option value={true}>Coverage Confirmed</option>
+            <option value={false}>Coverage Denied</option>
+          </Input>
+        </Col>
+      </FormGroup>
+
+      <FormGroup check row>
+        <Col sm={{ size: 10, offset: 2 }}>
+          <Button>Submit</Button>
         </Col>
       </FormGroup>
     </Form>
