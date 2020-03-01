@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { updateTransportationCheckList } from "../../store/TransportationCheckLists/action";
-import { match } from "assert";
 import {
   Col,
   Button,
@@ -86,12 +85,12 @@ const EditTransportationCheckList = props => {
 //       [name]: value
 //     });
 //   }
-  function handeCheckBox(e) {
-    const { name, value } = e.target;
-    setTheCall({
-      [name]: value
-    });
-  }
+//   function handeCheckBox(e) {
+//     const { name, value } = e.target;
+//     setTheCall({
+//       [name]: value
+//     });
+//   }
   return (
     <Form onSubmit={handleSubmit}>
       <p>summary of items needed and link to resource</p>
