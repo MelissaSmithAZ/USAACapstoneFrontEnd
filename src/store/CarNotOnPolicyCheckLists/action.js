@@ -4,95 +4,97 @@ import { BASE_URL } from "./constants";
 
 export const fetchAllCarNotOnPolicyCheckLists = () => async dispatch => {
   dispatch({
-    type: types.FETCH_ALL_CARNOTONPOLICYCKLISTS_PENDING
+    type: types.FETCH_ALL_CARNOTONPOLICYCHECKLISTS_PENDING
   });
   try {
     let response = await axios.get(BASE_URL);
     dispatch({
-      type: types.FETCH_ALL_CARNOTONPOLICYCKLISTS_SUCCESS,
+      type: types.FETCH_ALL_CARNOTONPOLICYCHECKLISTS_SUCCESS,
       payload: response.data
     });
   } catch (err) {
     dispatch({
-      type: types.FETCH_ALL_CARNOTONPOLICYCKLISTS_FAILED,
+      type: types.FETCH_ALL_CARNOTONPOLICYCHECKLISTS_FAILED,
       payload: err
     });
   }
 };
-export const fetchOneCarNotOnPolicyCkList = id => async dispatch => {
+export const fetchOneCarNotOnPolicyCheckList = id => async dispatch => {
   dispatch({
-    type: types.FETCH_ONE_CARNOTONPOLICYCKLIST_PENDING
+    type: types.FETCH_ONE_CARNOTONPOLICYCHECKLIST_PENDING
   });
 
   try {
     let response = await axios.get(BASE_URL + `/${id}`);
     dispatch({
-      type: types.FETCH_ONE_CARNOTONPOLICYCKLIST_SUCCESS,
+      type: types.FETCH_ONE_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data
     });
   } catch (err) {
     dispatch({
-      type: types.FETCH_ONE_CARNOTONPOLICYCKLIST_FAILED
+      type: types.FETCH_ONE_CARNOTONPOLICYCHECKLIST_FAILED
     });
   }
 };
-export const addCarNotOnPolicyCkList = newCarNotOnPolicyCkList => async dispatch => {
+export const addCarNotOnPolicyCheckList = newCarNotOnPolicyCheckList => async dispatch => {
   dispatch({
-    type: types.ADD_CARNOTONPOLICYCKLIST_PENDING
+    type: types.ADD_CARNOTONPOLICYCHECKLIST_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, newCarNotOnPolicyCkList);
+    let response = await axios.post(BASE_URL, newCarNotOnPolicyCheckList);
     dispatch({
-      type: types.ADD_CARNOTONPOLICYCKLIST_SUCCESS,
+      type: types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data
     });
   } catch (err) {
     dispatch({
-      type: types.ADD_CARNOTONPOLICYCKLIST_FAILED,
+      type: types.ADD_CARNOTONPOLICYCHECKLIST_FAILED,
       payload: err
     });
   }
 };
-export const updateCarNotOnPolicyCkList = (
-  updatedCarNotOnPolicyCkList,
-  id
+export const updateCarNotOnPolicyCheckList = (
+  updatedCarNotOnPolicyCheckList
 ) => async dispatch => {
   console.log(
-    "**UPDATED Carnot on policy tACTION",
-   updatedCarNotOnPolicyCkList
+    "**UPDATED CarNotONPolicy  ACTION",
+    updatedCarNotOnPolicyCheckList
   );
+  //give me an object that has everything other than pets that is called cust
+  // let {pets, ...cust } = updatedCustomer
   dispatch({
-    type: types.UPDATE_CARNOTONPOLICYCKLIST_PENDING
+    type: types.UPDATE_CARNOTONPOLICYCHECKLIST_PENDING
   });
+  // console.log("ID IN TRNS",id)
   try {
     let response = await axios.patch(
-      BASE_URL + `/${updatedCarNotOnPolicyCkList.claim_id}`,
-      updatedCarNotOnPolicyCkList
+      BASE_URL + `/${updatedCarNotOnPolicyCheckList.claim_id}`,
+      updatedCarNotOnPolicyCheckList
     );
     dispatch({
-      type: types.UPDATE_CARNOTONPOLICYCKLIST_SUCCESS,
+      type: types.UPDATE_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data
     });
   } catch (err) {
     dispatch({
-      type: types.UPDATE_CARNOTONPOLICYCKLIST_FAILED,
+      type: types.UPDATE_CARNOTONPOLICYCHECKLIST_FAILED,
       payload: err
     });
   }
 };
-export const removeCarNotOnPolicyCkList = id => async dispatch => {
+export const removeCarNotOnPolicyCheckList = id => async dispatch => {
   dispatch({
-    type: types.REMOVE_CARNOTONPOLICYCKLIST_PENDING
+    type: types.REMOVE_CARNOTONPOLICYCHECKLIST_PENDING
   });
   try {
     let response = await axios.delete(BASE_URL + `/${id}`);
     dispatch({
-      type: types.REMOVE_CARNOTONPOLICYCKLIST_SUCCESS,
+      type: types.REMOVE_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data
     });
   } catch (err) {
     dispatch({
-      type: types.UPDATE_CARNOTONPOLICYCKLIST_FAILED,
+      type: types.UPDATE_CARNOTONPOLICYCHECKLIST_FAILED,
       payload: err
     });
   }

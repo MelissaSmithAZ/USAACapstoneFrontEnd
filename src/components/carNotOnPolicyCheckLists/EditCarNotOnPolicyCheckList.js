@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { updateCarNotOnPolicyCkList } from "../../store/CarNotOnPolicyCheckLists/action";
+import { updateCarNotOnPolicyCheckList } from "../../store/CarNotOnPolicyCheckLists/action";
 import {
   Col,
   Button,
@@ -50,7 +50,8 @@ const EditCarNotOnPolicyCheckList = props => {
       
       
       
-  console.log("CALL MEMBER TEST", theCarNotOnPolicyCheckList)
+  console.log("*****CALL MEMBER TEST", theCarNotOnPolicyCheckList)
+  console.log("*****CALL MEMBER TEST", props)
   const handleSubmit = e => {
     e.prevmentDefault();
     props.updateCarNotOnPolicyCheckList({
@@ -206,6 +207,6 @@ const EditCarNotOnPolicyCheckList = props => {
     </Form>
   );
 };
-export default connect(null, { updateCarNotOnPolicyCkList })(
+export default connect(null, { updateCarNotOnPolicyCheckList })(
   withRouter(EditCarNotOnPolicyCheckList)
 );
