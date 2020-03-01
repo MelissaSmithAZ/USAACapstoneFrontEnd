@@ -56,8 +56,7 @@ export const addTransportationCheckList = newTransportationCheckList => async di
 };
 
 export const updateTransportationCheckList = (
-  updatedTransportationCheckList,
-  id
+  updatedTransportationCheckList 
 ) => async dispatch => {
   console.log(
     "UPDATED TransportationCheckList ACTION",
@@ -68,9 +67,10 @@ export const updateTransportationCheckList = (
   dispatch({
     type: types.UPDATE_TRANSPORTATIONCHECKLIST_PENDING
   });
+  // console.log("ID IN TRNS",id)
   try {
     let response = await axios.patch(
-      BASE_URL + `/${id}`,
+      BASE_URL + `/${updatedTransportationCheckList.claim_id}`,
       updatedTransportationCheckList
     );
     dispatch({

@@ -27,6 +27,7 @@ export default (state = initialState, action) => {
         all: action.payload
       };
     case types.ADD_TRANSPORTATIONCHECKLIST_SUCCESS:
+      console.log("PAYLOAD TRANSPORTATIO", action.payload)
       return {
         ...state,
         all: [action.payload, ...state.all]
