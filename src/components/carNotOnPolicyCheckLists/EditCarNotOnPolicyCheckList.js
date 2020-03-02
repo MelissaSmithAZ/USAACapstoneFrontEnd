@@ -53,7 +53,7 @@ const EditCarNotOnPolicyCheckList = props => {
   console.log("*****CALL MEMBER TEST", theCarNotOnPolicyCheckList)
   console.log("*****CALL MEMBER TEST", props)
   const handleSubmit = e => {
-    e.prevmentDefault();
+    e.preventDefault();
     props.updateCarNotOnPolicyCheckList({
       id: theCarNotOnPolicyCheckList.id,
       call_member: theCallMember,

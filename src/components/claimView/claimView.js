@@ -38,6 +38,7 @@ const ClaimView = props => {
     );
   }, [claims]);
 
+  console.log("PROPS", props)
   // console.log("SINGLE CLAIM******", singleClaimView);
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const ClaimView = props => {
   }, [theTransportationCheckList]);
 
   useEffect(() => {
-    console.log("useEffect", props.singleClaimView)
+    // console.log("useEffect", props.singleClaimView)
     // setSingleClaimView(props.singleClaimView);
     setTheCarNotOnPolicyCheckList(
       carNotOnPolicyCheckList.find(cl => cl.claim.id === singleClaimView.id)
@@ -59,7 +60,7 @@ const ClaimView = props => {
   // const LinkTransporationEdit = (transportationCheckList.claim === singleClaimView.id)
 
   const renderLinkTransportation = () => {
-    console.log(theTransportationCheckList, "|||", singleClaimView);
+    // console.log(theTransportationCheckList, "|||", singleClaimView);
     if (
       theTransportationCheckList &&
       theTransportationCheckList.claim &&
@@ -73,14 +74,14 @@ const ClaimView = props => {
       }
     } else {
       return (
-        <Link to={"/addTransportationCheckList"}>add Transportation</Link>
+        <Link to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>add Transportation</Link>
       );
     }
     
   };
 
   const renderLinkCarNotOnPolicy = () => {
-    console.log(theCarNotOnPolicyCheckList, "|||", singleClaimView);
+    // console.log(theCarNotOnPolicyCheckList, "|||", singleClaimView);
     if (
       theCarNotOnPolicyCheckList &&
       theCarNotOnPolicyCheckList.claim &&
@@ -93,7 +94,7 @@ const ClaimView = props => {
       }
     } else {
       return (
-        <Link to={"/addCarNotOnPolicyCheckList"}>add NOV</Link>
+        <Link to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}>add NOV</Link>
       );
     }
   };
