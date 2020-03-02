@@ -26,7 +26,7 @@ const ListOfClaims = props => {
     return (
       <div>
         {/* <Container> */}
-        <Table>
+        <Table bordered>
           <thead>
             <tr>
               <th>Claim Number</th>

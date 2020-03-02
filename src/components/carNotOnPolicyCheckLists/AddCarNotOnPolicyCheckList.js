@@ -37,9 +37,10 @@ const AddCarNotOnPolicyCheckList = props => {
         );
     }, [claims]);
 
-    console.log("SINGLEClaim porp", singleClaimView)
+    console.log("SINGLEClaim porp", singleClaimView.id)
     console.log("claim porp", claims)
     console.log("claim porp", props)
+    // console.log("TheCARNOT ON", theCarNotOnPolicyCheckList.id)
 
     const handleSubmit = e => {
         e.preventDefault();

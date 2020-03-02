@@ -12,7 +12,7 @@ const Claim = props => {
   return (
     // <Container>
       <div>
-        <Table striped>
+      <Table striped bordered>
           {/* <thead>
         <tr >
 

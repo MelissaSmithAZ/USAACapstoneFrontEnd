@@ -31,7 +31,7 @@ const AddTransportationCheckList = props => {
 
     const claims = useSelector(state => state.claims.all);
 
-   
+
 
     useEffect(() => {
         // console.log("useEffect", props.singleClaimView)
@@ -41,16 +41,13 @@ const AddTransportationCheckList = props => {
         );
     }, [claims]);
 
-
-
-     console.log("SINGLEClaim porp", claim)
-     console.log("claim porp", claims)
+    console.log("SINGLEClaim porp", singleClaimView)
+    console.log("claim porp", claims)
     console.log("claim porp", props)
     
     const handleSubmit = e => {
         e.preventDefault();
         props.addTransportationCheckList({
-            // id: theTransportationCheckList.id,
             call: theCall,
             call_doc: theCallDoc,
             letter: theLetter,
@@ -58,33 +55,11 @@ const AddTransportationCheckList = props => {
             claimant_call: theClaimantCall,
             claimant_call_doc: theClaimantCallDoc,
             coverage_decision: theCoverageDecision,
-            claim_id: { 
-                id: singleClaimView.id,
-                claim_number: singleClaimView.claim_number,
-                claimant_name: singleClaimView.claimant_name,
-                claimant_phone: singleClaimView.claimant_phone,
-                claimant_address: singleClaimView.claimant_address,
-                claimant_email: singleClaimView.claimant_email,
-                claimant_auto: singleClaimView.claimant_auto,
-                occurrence_state: singleClaimView.occurrence_state,
-                employee_id: singleClaimView.employee_id,
-                member: {
-                    id: singleClaimView.member.id,
-                    member_name: singleClaimView.member.member_name,
-                    member_number: singleClaimView.member.member_number,
-                    phone: singleClaimView.member.phone,
-                    address: singleClaimView.member.address,
-                    email: singleClaimView.member.email,
-                    auto_1: singleClaimView.member.auto_1,
-                    base_state: singleClaimView.member.base_state,
-                    bi_coverage: singleClaimView.member.bi_coverage,
-                    collision_coverage: singleClaimView.member.collision_coverage,
-                    pd_coverage: singleClaimView.member.pd_coverage
-                }
-            }
-               
-        }
-    });
+            claim_id: singleClaimView.id
+        });
+
+        //   console.log("Claim id", claim.id)
+    };
 
         return (
 

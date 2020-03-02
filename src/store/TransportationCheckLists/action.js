@@ -42,7 +42,7 @@ export const addTransportationCheckList = newTransportationCheckList => async di
     type: types.ADD_TRANSPORTATIONCHECKLIST_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, newTransportationCheckList);
+    let response = await axios.post(BASE_URL + `/${newTransportationCheckList.claim_id}`, newTransportationCheckList);
     dispatch({
       type: types.ADD_TRANSPORTATIONCHECKLIST_SUCCESS,
       payload: response.data
