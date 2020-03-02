@@ -37,11 +37,15 @@ export const fetchOneCarNotOnPolicyCheckList = id => async dispatch => {
   }
 };
 export const addCarNotOnPolicyCheckList = newCarNotOnPolicyCheckList => async dispatch => {
+  console.log(
+    "**ADD CarNotONPolicy  ACTION",
+    newCarNotOnPolicyCheckList
+  );
   dispatch({
     type: types.ADD_CARNOTONPOLICYCHECKLIST_PENDING
   });
   try {
-    let response = await axios.post(BASE_URL, newCarNotOnPolicyCheckList);
+    let response = await axios.post(BASE_URL`/${newCarNotOnPolicyCheckList.claim_id}`, newCarNotOnPolicyCheckList);
     dispatch({
       type: types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data

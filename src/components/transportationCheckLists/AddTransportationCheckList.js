@@ -41,16 +41,197 @@ const AddTransportationCheckList = props => {
         );
     }, [claims]);
 
-     console.log("SINGLEClaim porp", singleClaimView)
+
+
+     console.log("SINGLEClaim porp", claim)
      console.log("claim porp", claims)
-     console.log("claim porp", props)
+    console.log("claim porp", props)
+    
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.addTransportationCheckList({
+            // id: theTransportationCheckList.id,
+            call: theCall,
+            call_doc: theCallDoc,
+            letter: theLetter,
+            claimant_letter: theClaimantLetter,
+            claimant_call: theClaimantCall,
+            claimant_call_doc: theClaimantCallDoc,
+            coverage_decision: theCoverageDecision,
+            claim_id: { 
+                id: singleClaimview.id,
+                claim_number: singleClaimview.claim_number,
+                claimant_name: singleClaimview.claimant_name,
+                claimant_phone: singleClaimview.claimant_phone,
+                claimant_address: singleClaimview.claimant_address,
+                claimant_email: singleClaimview.claimant_email,
+                claimant_auto: singleClaimview.claimant_auto,
+                occurrence_state: singleClaimview.occurrence_state,
+                employee_id: singleClaimview.employee_id,
+                member: {
+                    id: singleClaimview.member.id,
+                    member_name: singleClaimview.member.member_name,
+                    member_number: singleClaimview.member.member_number,
+                    phone: singleClaimView.member.phone,
+                    address: singleClaimview.member.address,
+                    email: singleClaimview.member.email,
+                    auto_1: singleClaimview.member.auto_1,
+                    base_state: singleClaimview.member.base_state,
+                    bi_coverage: singleClaimview.member.bi_coverage,
+                    collision_coverage: singleClaimview.member.collision_coverage,
+                    pd_coverage: singleClaimview.member.pd_coverage
+                }
+            }
+               
+        }
+    });
 
-    return (
+        return (
 
-        <div>Add Transportation</div>
-    )
+        <Form onSubmit={handleSubmit}>
+            <p>summary of items needed and link to resource</p>
+            <FormGroup row>
+                <Label for="checkbox2" sm={2}>
+                    Member Called
+        </Label>
+                <Col sm={{ size: 10 }}>
+                    <FormGroup check>
+                        <Label check>
+                            <Input
+                                type="checkbox"
+                                id="checkbox2"
+                                name="call"
+                                checked={theCall}
+                                onChange={() => setTheCall(!theCall)}
+                            />{" "}
+                            Member Called
+            </Label>
+                    </FormGroup>
+                </Col>
+            </FormGroup>
+            <p>Call Doc must cover: x,y,z</p>
 
-}
-export default connect(null, { addTransportationCheckList, updateClaim })(
-    withRouter(AddTransportationCheckList)
-);
+            <FormGroup row>
+                <Label for="exampleText" sm={2}>
+                    Member Call Doc
+        </Label>
+                <Col sm={10}>
+                    <Input
+                        type="textarea"
+                        id="exampleText"
+                        name="call_doc"
+                        value={theCallDoc}
+                        onChange={(e) => setTheCallDoc(e.target.value)}
+                    />
+                </Col>
+            </FormGroup>
+
+            <FormGroup row>
+                <Label for="checkbox2" sm={2}>
+                    Initial Member Leter
+        </Label>
+                <Col sm={{ size: 10 }}>
+                    <FormGroup check>
+                        <Label check>
+                            <Input
+                                type="checkbox"
+                                id="checkbox2"
+                                name="letter"
+                                checked={theLetter}
+                                onChange={() => setTheLetter(!theLetter)}
+                            />{" "}
+                            <Link>Send Member Leter</Link>
+                        </Label>
+                    </FormGroup>
+                </Col>
+            </FormGroup>
+            <FormGroup row>
+                <Label for="checkbox2" sm={2}>
+                    Claimant Called
+        </Label>
+                <Col sm={{ size: 10 }}>
+                    <FormGroup check>
+                        <Label check>
+                            <Input
+                                type="checkbox"
+                                id="checkbox2"
+                                name="claimant_call"
+                                onChange={() => setTheClaimantCall(!theClaimantCall)}
+                                checked={theClaimantCall}
+                            />{" "}
+                            Claimant Called
+            </Label>
+                    </FormGroup>
+                </Col>
+            </FormGroup>
+            <p>Call Doc must cover: x,y,z</p>
+
+            <FormGroup row>
+                <Label for="exampleText" sm={2}>
+                    Claimat Call Doc
+        </Label>
+                <Col sm={10}>
+                    <Input
+                        type="textarea"
+                        id="exampleText"
+                        name="claimant_call_doc"
+                        value={theClaimantCallDoc}
+                        onChange={(e) => setTheClaimantCallDoc(e.target.value)}
+                    />
+                </Col>
+            </FormGroup>
+            <FormGroup row>
+                <Label for="checkbox2" sm={2}>
+                    Initial Claimant Leter
+        </Label>
+                <Col sm={{ size: 10 }}>
+                    <FormGroup check>
+                        <Label check>
+                            <Input
+                                type="checkbox"
+                                id="checkbox2"
+                                name="claimant_letter"
+                                checked={theClaimantLetter}
+                                onChange={() => setTheClaimantLetter(!theClaimantLetter)}
+                            />{" "}
+                            <Link>Send Claimant Leter</Link>
+                        </Label>
+                    </FormGroup>
+                </Col>
+            </FormGroup>
+
+            <p>Once all information received make final decision</p>
+
+            <FormGroup row>
+                <Label for="exampleSelect" sm={2}>
+                    Select
+        </Label>
+                <Col sm={10}>
+                    <Input
+                        type="select"
+                        id="exampleSelect"
+                        name="coverage_decision"
+                        onChange={(e) => setTheCoverageDecision(e.target.value)}
+                    >
+                        <option>choose Coverage Decision</option>
+                        <option value={true}>Coverage Confirmed</option>
+                        <option value={false}>Coverage Denied</option>
+                    </Input>
+                </Col>
+            </FormGroup>
+
+            <FormGroup check row>
+                <Col sm={{ size: 10, offset: 2 }}>
+                    <Button>Submit</Button>
+                </Col>
+            </FormGroup>
+        </Form>
+    );
+};
+
+        
+
+
+    export default connect(null, { addTransportationCheckList, updateClaim })(
+        withRouter(AddTransportationCheckList)
+    );

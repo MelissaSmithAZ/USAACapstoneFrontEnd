@@ -26,7 +26,7 @@ export const fetchOneTransportationCheckLisat = id => async dispatch => {
   //can we put a id.name to search by name
 
   try {
-    let response = await axios.get(BASE_URL + `/${id}`);
+    let response = await axios.get(BASE_URL + ``);
     dispatch({
       type: types.FETCH_ONE_TRANSPORTATIONCHECKLIST_SUCCESS,
       payload: response.data
