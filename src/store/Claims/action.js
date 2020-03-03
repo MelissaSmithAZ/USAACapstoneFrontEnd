@@ -72,6 +72,10 @@ export const updateClaim = (updatedClaim, id) => async dispatch => {
 };
 
 export const removeClaim = id => async dispatch => {
+  // console.log(
+  //   "**Remove  ACTION",
+  //   removeClaim
+  // );
   dispatch({
     type: types.REMOVE_CLAIM_PENDING
   });
