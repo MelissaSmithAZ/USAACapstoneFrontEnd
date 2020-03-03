@@ -11,6 +11,7 @@ import {
   Switch,
   withRouter
 } from "react-router-dom";
+import '@fortawesome/fontawesome-svg-core/styles.css' // Import the CSS
 
 import Dashboard from "./components/dashboard/Dashboard"
 import AddCarNotOnPolicyCheckList from "./components/carNotOnPolicyCheckLists/AddCarNotOnPolicyCheckList";
@@ -21,6 +22,7 @@ import EditCoverageCheckList from "./components/coverageCheckLists/EditCoverageC
 import AddTransportationCheckList from "./components/transportationCheckLists/AddTransportationCheckList";
 import EditTransportationCheckList from "./components/transportationCheckLists/EditTransportationCheckList";
 import ClaimView from "./components/claimView/ClaimView"
+
 
 const App = props => {
   const dispatch = useDispatch();

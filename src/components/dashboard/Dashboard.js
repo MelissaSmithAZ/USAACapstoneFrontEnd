@@ -17,7 +17,7 @@ const Dashboard = () => {
           <Navbar.Toggle />
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-center">
-          <Link to={"/"}>List Of Claims </Link>
+          <Link id="navLink" to={"/"}>List Of Claims </Link>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>

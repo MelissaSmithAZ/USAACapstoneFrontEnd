@@ -72,3 +72,17 @@
   margin-top: 25px;
   height: 75px;
 }
+#editClaimLink {
+  color: red;
+}
+#addClaimLink {
+  color: grey;
+}
+#navLink {
+  color: black;
+ font-weight: bold;
+
+}
+/* #listBackground {
+
+} */

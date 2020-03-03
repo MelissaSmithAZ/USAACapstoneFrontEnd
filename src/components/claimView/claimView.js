@@ -5,9 +5,9 @@ import { Card, CardTitle, CardText, Button, Row, Col } from "reactstrap";
 import { updateClaim } from "../../store/Claims/action";
 import { fetchAllTransportationCheckList } from "../../store/TransportationCheckLists/action";
 import { fetchAllCarNotOnPolicyCheckLists } from "../../store/CarNotOnPolicyCheckLists/action";
-// import { FontAwesomeIcon } from "@fontawesome/react-fontawesome"; 
-// import { faBan } from "@fortawesome/free-solid-svg-icons";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faBan } from '@fortawesome/free-solid-svg-icons'
 const ClaimView = props => {
   // const claims = useSelector(state => state.claims.all);
   //getter setter
@@ -70,13 +70,18 @@ const ClaimView = props => {
     ) {
       if (theTransportationCheckList.claim.id === singleClaimView.id) {
         return (
-          <Link to={`/editTransportationCheckList/${theTransportationCheckList.id}`}>Edit Transportation</Link>
-        )
+          <Link
+            id="editClaimLink"
+            to={`/editTransportationCheckList/${theTransportationCheckList.id}`}
+          >
+            Edit Transportation <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
+          </Link>
+        );
               // <Link to={`/claims/${props.claim.claim_number}`}><th scope="row">
       }
     } else {
       return (
-        <Link to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>add Transportation</Link>
+        <Link id="addClaimLink" to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>add Transportation</Link>
       );
     }
     
@@ -93,16 +98,21 @@ const ClaimView = props => {
     ) {
       if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id) {
         return (
-          <Link
+          <Link id="editClaimLink"
             to={`/editCarNotOnPolicyCheckList/${theCarNotOnPolicyCheckList.id}`}
           >
-            {/* Edit NOV <div><FontAwesomeIcon icon={faBan} /></div> */}
+            Edit NOV <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
           </Link>
         );
       }
     } else {
       return (
-        <Link to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}>Add NOV<i class="fas fa-ban"></i> </Link>
+        <Link
+          id="addClaimLink"
+          to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}
+        >
+          Add NOV{" "}
+        </Link>
       );
     }
   };
@@ -163,7 +173,7 @@ const ClaimView = props => {
                   singleClaimView.member.auto_1}
               </p>
             </CardText>
-            <Button>Go somewhere</Button>
+            <Button>Edit Member</Button>
           </Card>
         </Col>
         <Col sm="6">
@@ -182,7 +192,7 @@ const ClaimView = props => {
               <p>Email:{singleClaimView && singleClaimView.claimant_email}</p>
               <p>Vehicle:{singleClaimView && singleClaimView.claimant_auto}</p>
             </CardText>
-            <Button>Go somewhere</Button>
+            <Button>Edit Claimant</Button>
           </Card>
         </Col>
       </Row>

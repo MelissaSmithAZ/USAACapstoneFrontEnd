@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { removeClaim } from "../../store/Claims/action";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
 
 import {
     Container,
@@ -26,20 +29,29 @@ const ListOfClaims = props => {
     // const [query, setQuery] = useState("");
   const claimsList = claims.map(claim => (
     <tr>
-      <Link to={`/claims/${claim.claim_number}`}><th scope="row">{claim.claim_number}</th></Link>
+      <Link to={`/claims/${claim.claim_number}`}>
+        <th scope="row">{claim.claim_number}</th>
+      </Link>
       <td>{claim.member.member_name}</td>
       <td>{claim.claimant_name}</td>
       <td>{claim.claimant_auto}</td>
-      <td><Button type="submit" onClick={() =>props.removeClaim(claim.id)} size="xs">Delete</Button></td>
+      <td>
+        <Button
+          type="submit"
+          onClick={() => props.removeClaim(claim.id)}
+          size="xs"
+        >
+         <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon>{" "}
+        </Button>
+      </td>
     </tr>
-   
   ));
     console.log("CONSOL CLAIM#", claims.claim_number);
 //  const handleRemove = e => {
 //     props.removeClaim(claim.id)
 //   }
     return (
-      <div>
+      <div id="listBackground">
         <Container id='claimsList'>
         <Table striped >
           <thead>
