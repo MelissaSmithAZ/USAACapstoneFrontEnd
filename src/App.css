@@ -63,3 +63,12 @@
     transform: rotate(360deg);
   }
 }
+
+#claimsList {
+   bottom: 10px;
+}
+#navid {
+  background-color: #f4f4f4;
+  margin-top: 25px;
+  height: 75px;
+}

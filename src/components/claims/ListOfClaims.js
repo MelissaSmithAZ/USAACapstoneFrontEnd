@@ -40,8 +40,8 @@ const ListOfClaims = props => {
 //   }
     return (
       <div>
-        {/* <Container> */}
-        <Table bordered>
+        <Container id='claimsList'>
+        <Table striped >
           <thead>
             <tr>
               <th>Claim Number</th>
@@ -51,7 +51,7 @@ const ListOfClaims = props => {
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             
             {claimsList}
             {/* <tr>
@@ -66,7 +66,7 @@ const ListOfClaims = props => {
           
         </Table>
        
-        {/* </Container> */}
+        </Container>
       </div>
     );
 }

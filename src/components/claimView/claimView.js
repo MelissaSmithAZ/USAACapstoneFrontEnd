@@ -5,6 +5,8 @@ import { Card, CardTitle, CardText, Button, Row, Col } from "reactstrap";
 import { updateClaim } from "../../store/Claims/action";
 import { fetchAllTransportationCheckList } from "../../store/TransportationCheckLists/action";
 import { fetchAllCarNotOnPolicyCheckLists } from "../../store/CarNotOnPolicyCheckLists/action";
+// import { FontAwesomeIcon } from "@fontawesome/react-fontawesome"; 
+// import { faBan } from "@fortawesome/free-solid-svg-icons";
 
 const ClaimView = props => {
   // const claims = useSelector(state => state.claims.all);
@@ -82,6 +84,8 @@ const ClaimView = props => {
 
   const renderLinkCarNotOnPolicy = () => {
     // console.log(theCarNotOnPolicyCheckList, "|||", singleClaimView);
+
+  //testing to see if there is a carNotOnPolicy or transportation id will than link Add or edit display
     if (
       theCarNotOnPolicyCheckList &&
       theCarNotOnPolicyCheckList.claim &&
@@ -89,15 +93,20 @@ const ClaimView = props => {
     ) {
       if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id) {
         return (
-          <Link to={`/editCarNotOnPolicyCheckList/${theCarNotOnPolicyCheckList.id}`}>Edit NOV</Link>
-        )
+          <Link
+            to={`/editCarNotOnPolicyCheckList/${theCarNotOnPolicyCheckList.id}`}
+          >
+            {/* Edit NOV <div><FontAwesomeIcon icon={faBan} /></div> */}
+          </Link>
+        );
       }
     } else {
       return (
-        <Link to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}>add NOV</Link>
+        <Link to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}>Add NOV<i class="fas fa-ban"></i> </Link>
       );
     }
   };
+
 
   return (
     <div>
