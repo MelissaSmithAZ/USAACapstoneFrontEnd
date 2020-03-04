@@ -65,7 +65,7 @@ const EditCarNotOnPolicyCheckList = props => {
       final_letterMember: theFinalLetterMember,
       coverage_decision: theCoverageDecision,
       claim_id: theCarNotOnPolicyCheckList.claim.id
-    }, props.history.push('/'));
+    }, props.history.goBack());
   };
   return (
     <Form onSubmit={handleSubmit}>

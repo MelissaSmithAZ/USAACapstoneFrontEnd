@@ -69,7 +69,7 @@ const EditTransportationCheckList = props => {
       claimant_call_doc: theClaimantCallDoc,
       coverage_decision: theCoverageDecision,
       claim_id: theTransportationCheckList.claim.id
-    },props.history.push('/'));
+    },props.history.goBack());
     
       console.log("theTransporationCheckList claim_id", theTransportationCheckList.claim_id)
       console.log("singleClaimView id", singleClaimView)

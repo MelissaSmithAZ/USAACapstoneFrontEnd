@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link, NavLink } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
-import { Card, CardTitle, CardText, Button, Row, Col } from "reactstrap";
+import { Card, CardTitle, CardText, Button, Row, Col, Container, Alert } from "reactstrap";
 import { updateClaim } from "../../store/Claims/action";
 import { fetchAllTransportationCheckList } from "../../store/TransportationCheckLists/action";
 import { fetchAllCarNotOnPolicyCheckLists } from "../../store/CarNotOnPolicyCheckLists/action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faBan } from '@fortawesome/free-solid-svg-icons'
+import { faBan, faDollarSign} from '@fortawesome/free-solid-svg-icons'
 const ClaimView = props => {
   // const claims = useSelector(state => state.claims.all);
   //getter setter
@@ -19,7 +19,10 @@ const ClaimView = props => {
   const [theCarNotOnPolicyCheckList, setTheCarNotOnPolicyCheckList] = useState(
     {}
   );
+  const [visible, setVisible] = useState(true);
 
+  const onDismiss = () => setVisible(false);
+  
   const claims = useSelector(state => state.claims.all);
 
   const transportationCheckList = useSelector(
@@ -74,14 +77,16 @@ const ClaimView = props => {
             id="editClaimLink"
             to={`/editTransportationCheckList/${theTransportationCheckList.id}`}
           >
-            Edit Transportation <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
+            Edit Rideshare <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
           </Link>
+         
         );
+        
               // <Link to={`/claims/${props.claim.claim_number}`}><th scope="row">
       }
     } else {
       return (
-        <Link id="addClaimLink" to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>add Transportation</Link>
+        <Link id="addClaimLink" to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>Add Rideshare</Link>
       );
     }
     
@@ -103,6 +108,7 @@ const ClaimView = props => {
           >
             Edit NOV <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
           </Link>
+      
         );
       }
     } else {
@@ -116,28 +122,55 @@ const ClaimView = props => {
       );
     }
   };
+  
+  const covNOV = () => {
+    // console.log(theCarNotOnPolicyCheckList, "|||", singleClaimView);
 
+    //testing to see if there is a carNotOnPolicy or transportation id will than link Add or edit display
+    if (
+      theCarNotOnPolicyCheckList &&
+      theCarNotOnPolicyCheckList.claim &&
+      singleClaimView
+    ) {
+      if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id) {
+        return (
+          <Alert color="info">
+            I am an alert and I can be dismissed!
+    </Alert>
+
+        );
+      }
+    }
+  }
 
   return (
     <div>
+       {covNOV} 
+    <Container>
+      
       <Row id="cov-card1">
         <Col sm={6}>
-          <Card>
+          <Card id="card">
             <CardTitle>
               <h5>Claim Task Line</h5>
             </CardTitle>
-
-            {renderLinkTransportation()}
-            {renderLinkCarNotOnPolicy()}
-
-            
+            <Row>
+              <Col>
+                {renderLinkTransportation()}
+              </Col>
+              <Col>{renderLinkCarNotOnPolicy()}
+              </Col>
+              <Col id="icon">
+                Limits <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+              </Col>
+            </Row>
           </Card>
         </Col>
       </Row>
 
       <Row>
         <Col sm="6">
-          <Card body>
+          <Card id="card" body>
             <CardTitle>
               <h3>Insured: </h3>
             </CardTitle>
@@ -177,14 +210,15 @@ const ClaimView = props => {
           </Card>
         </Col>
         <Col sm="6">
-          <Card body>
+          <Card id="card" body>
             <CardTitle>
               <h3>Claimant: </h3>
             </CardTitle>
             <CardText>
               <p>Driver:{singleClaimView && singleClaimView.claimant_name}</p>
               <p>
-                Phone Number:{singleClaimView && singleClaimView.claimant_phone}
+                Phone Number:
+                {singleClaimView && singleClaimView.claimant_phone}
               </p>
               <p>
                 Address:{singleClaimView && singleClaimView.claimant_address}
@@ -198,34 +232,35 @@ const ClaimView = props => {
       </Row>
 
       <Row id="cov-card">
-        <Col sm={10}>
-          <Card id="cov-card">
-            <CardTitle>
-              <h3>Coverages</h3>
-            </CardTitle>
-            <CardText>
-              <p>
-                Bodily Injury: $
-                {singleClaimView &&
-                  singleClaimView.member &&
-                  singleClaimView.member.bi_coverage}
-              </p>
-              <p>
-                Collision: $
-                {singleClaimView &&
-                  singleClaimView.member &&
-                  singleClaimView.member.collision_coverage}
-              </p>
-              <p>
-                Property Damage: $
-                {singleClaimView &&
-                  singleClaimView.member &&
-                  singleClaimView.member.pd_coverage}
-              </p>
-            </CardText>
-          </Card>
-        </Col>
+          <Col sm={10}>
+            <Card id="cardCoverage">
+              <CardTitle>
+                <h3>Coverages</h3>
+              </CardTitle>
+              <CardText>
+                <p>
+                  Bodily Injury: $
+                  {singleClaimView &&
+                    singleClaimView.member &&
+                    singleClaimView.member.bi_coverage}
+                </p>
+                <p>
+                  Collision: $
+                  {singleClaimView &&
+                    singleClaimView.member &&
+                    singleClaimView.member.collision_coverage}
+                </p>
+                <p>
+                  Property Damage: $
+                  {singleClaimView &&
+                    singleClaimView.member &&
+                    singleClaimView.member.pd_coverage}
+                </p>
+              </CardText>
+            </Card>
+          </Col>
       </Row>
+      </Container>
     </div>
   );
 };

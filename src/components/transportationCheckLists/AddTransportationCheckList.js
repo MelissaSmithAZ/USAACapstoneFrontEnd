@@ -56,7 +56,7 @@ const AddTransportationCheckList = props => {
             claimant_call_doc: theClaimantCallDoc,
             coverage_decision: theCoverageDecision,
             claim_id: singleClaimView.id
-        }, props.history.push('/'));
+        }, props.history.goBack());
 
         //   console.log("Claim id", claim.id)
     };
