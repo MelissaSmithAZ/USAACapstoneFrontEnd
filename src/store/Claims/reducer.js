@@ -35,8 +35,9 @@ export default (state = initialState, action) => {
       console.log("action REMOVE payload", action.payload);
 
       return {
-        ...state,
-        all: state.all.filter(claim => claim.id !== action.payload.id)
+        // ...state,
+        all: state.all.filter(claim => claim.id !== action.payload.id),
+        ...state
       };
     case types.UPDATE_CLAIM_SUCCESS:
       console.log("action payload", action.payload);

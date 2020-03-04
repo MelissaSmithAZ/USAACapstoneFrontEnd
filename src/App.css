@@ -1,6 +1,11 @@
 .App {
   text-align: center;
+  /* background-color: black; */
 }
+
+  body{
+  background-color: black;
+} 
 #cov-card {
   display: flex;
   flex-direction: column;
@@ -67,6 +72,8 @@
 
 #claimsList {
    bottom: 10px;
+
+
 }
 #navid {
   background-color: #f4f4f4;
@@ -88,6 +95,9 @@
 
 #card {
   background-color: #f4f4f4;
+  border-radius: 25px;
+  margin-bottom: 50px;
+
 }
 
 #cardCoverage {
@@ -99,6 +109,8 @@
 font-weight: bold;
 }
 
-/* #listBackground {
+#imgCard {
+  border-radius: 25px;
+  height: 300px;
+}
 
-} */
