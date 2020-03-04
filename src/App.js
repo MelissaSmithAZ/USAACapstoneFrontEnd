@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react';
 import './App.css';
+import './index.css';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllCarNotOnPolicyCheckLists } from './store/CarNotOnPolicyCheckLists/action';
 import { fetchAllClaims } from './store/Claims/action';
@@ -21,7 +22,8 @@ import AddCoverageCheckList from "./components/coverageCheckLists/AddCoverageChe
 import EditCoverageCheckList from "./components/coverageCheckLists/EditCoverageCheckList";
 import AddTransportationCheckList from "./components/transportationCheckLists/AddTransportationCheckList";
 import EditTransportationCheckList from "./components/transportationCheckLists/EditTransportationCheckList";
-import ClaimView from "./components/claimView/ClaimView"
+import ClaimView from "./components/claimView/ClaimView";
+
 
 
 const App = props => {
@@ -35,6 +37,7 @@ const App = props => {
   }, []);
   return (
     <div className="App">
+      
       <Router>
         <Dashboard />
 

@@ -10,6 +10,7 @@ const Dashboard = () => {
     //   <Nav>
     //     <p>Good Morning Good Evening and in case I don't see you Good night</p>
     //   </Nav>
+    <div id="body">
     <Container>
       <Navbar id="navid">
         <Navbar.Collapse>
@@ -25,7 +26,8 @@ const Dashboard = () => {
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
-    </Container>
+      </Container>
+    </div>
   );
 };
 export default connect(null, {  })(
