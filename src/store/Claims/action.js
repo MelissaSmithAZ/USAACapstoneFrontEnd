@@ -75,6 +75,7 @@ export const removeClaim = id => async dispatch => {
   // console.log(
   //   "**Remove  ACTION",
   //   removeClaim
+  //test for reducer
   // );
   dispatch({
     type: types.REMOVE_CLAIM_PENDING
