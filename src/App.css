@@ -109,6 +109,9 @@
 font-weight: bold;
 }
 
+#form{
+  align-content: center;
+}
 #imgCard {
   border-radius: 25px;
   height: 300px;

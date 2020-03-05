@@ -46,6 +46,7 @@ export const addCarNotOnPolicyCheckList = newCarNotOnPolicyCheckList => async di
   });
   try {
     let response = await axios.post(BASE_URL + `/${newCarNotOnPolicyCheckList.claim_id}`, newCarNotOnPolicyCheckList);
+    console.log("***response add", response.data)
     dispatch({
       type: types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data

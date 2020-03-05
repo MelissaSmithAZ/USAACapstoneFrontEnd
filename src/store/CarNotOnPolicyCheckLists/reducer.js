@@ -28,12 +28,13 @@ export default (state = initialState, action) => {
       };
     case types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS:
       return {
-        ...state,
         all: [action.payload, ...state.all]
+        
+       
       };
     case types.REMOVE_CARNOTONPOLICYCHECKLIST_SUCCESS:
       return {
-        ...state,
+        // ...state,
         all: state.all.filter(
           carNotOnPolicyCheckList => carNotOnPolicyCheckList.id !== action.payload.id
         )

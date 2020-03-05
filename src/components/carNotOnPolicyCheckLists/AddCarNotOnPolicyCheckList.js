@@ -44,7 +44,8 @@ const AddCarNotOnPolicyCheckList = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        props.addCarNotOnPolicyCheckList({
+        props.addCarNotOnPolicyCheckList(
+          {
             // id: theCarNotOnPolicyCheckList.id,
             call_member: theCallMember,
             call_doc: theCallDoc,
@@ -56,7 +57,7 @@ const AddCarNotOnPolicyCheckList = props => {
             coverage_decision: theCoverageDecision,
             // claim_id: theCarNotOnPolicyCheckList.claim.id
             claim_id: singleClaimView.id
-        }, props.history.push('/') );
+          }, props.history.goBack());
     };
 
 
