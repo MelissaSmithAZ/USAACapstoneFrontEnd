@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
       console.log("action REMOVE payload", action.payload);
 
       return {
-        
+        // ...state,
         all: state.all.filter(claim => claim.id !== action.payload),
         
       };
