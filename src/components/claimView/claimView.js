@@ -5,7 +5,6 @@ import { Card, CardTitle, CardText, Button, Row, Col, Container, Alert, CardImg,
 import { updateClaim } from "../../store/Claims/action";
 import { fetchAllTransportationCheckList } from "../../store/TransportationCheckLists/action";
 import { fetchAllCarNotOnPolicyCheckLists } from "../../store/CarNotOnPolicyCheckLists/action";
-import {CustomMap } from "./CustomMap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan, faDollarSign } from '@fortawesome/free-solid-svg-icons'
 

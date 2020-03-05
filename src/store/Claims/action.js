@@ -84,7 +84,7 @@ export const removeClaim = id => async dispatch => {
     let response = await axios.delete(BASE_URL + `/${id}`);
     dispatch({
       type: types.REMOVE_CLAIM_SUCCESS,
-      payload: response.data
+      payload: id
     });
   } catch (err) {
     dispatch({
