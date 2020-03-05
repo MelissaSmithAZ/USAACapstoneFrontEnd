@@ -116,4 +116,18 @@ font-weight: bold;
   border-radius: 25px;
   height: 300px;
 }
+#sideNav {
+ text-align: left;
+}
+#formContentbullet {
+  text-indent: 10px;
+}
 
+#formContenttab {
+  /* text-indent: 15px; */
+  margin-right: 10px;
+  margin-left: 25px;
+}
+#centerTxt {
+   align-content: center;
+}

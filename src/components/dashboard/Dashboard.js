@@ -11,7 +11,7 @@ const Dashboard = () => {
     //     <p>Good Morning Good Evening and in case I don't see you Good night</p>
     //   </Nav>
     <div id="body">
-    <Container>
+    {/* <Container> */}
       <Navbar id="navid">
         <Navbar.Collapse>
           <Navbar.Brand href="#home">Claims Prosessing</Navbar.Brand>
@@ -26,7 +26,7 @@ const Dashboard = () => {
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
-      </Container>
+      {/* </Container> */}
     </div>
   );
 };

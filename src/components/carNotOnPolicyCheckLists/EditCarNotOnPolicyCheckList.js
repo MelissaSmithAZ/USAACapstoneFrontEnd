@@ -12,7 +12,10 @@ import {
   FormText,
   Card,
   Container,
-  Row
+  Row,
+  Nav,
+  NavItem
+
 } from "reactstrap";
 
 const EditCarNotOnPolicyCheckList = props => {
@@ -71,9 +74,12 @@ const EditCarNotOnPolicyCheckList = props => {
     }, props.history.goBack());
   };
   return (
-    <Container>
-      
-    <Col>
+    <div>
+      <Row>
+    {/* <Container> */}
+
+    {/* <Row>  */}
+    <Col sm="8">
       <Card>
       <Form onSubmit={handleSubmit}>
 
@@ -221,11 +227,60 @@ const EditCarNotOnPolicyCheckList = props => {
        
         </Form>
       </Card>
-      </Col>
-    <Col sm="4"></Col>
-  
-    </Container>
-    
+        </Col>
+      {/* </Row>  */}
+      {/* <Row> */}
+        {/* <Col sm="4">
+          <Card>
+            This is a resource card
+          </Card>
+        </Col> */}
+      {/* </Row> */}
+    {/* </Container> */}
+    <Col sm="4">
+      {/* <Container> */}
+      <Card>
+            <div id="sideNav">
+              <h4 id="centerTxt">Helpful Hints</h4>
+              <Nav vertical>
+                <p id="formContentbullet">  * Script for advising Coverage issue </p>
+
+                <p id="formContenttab">Lor magna aliqua. Laoreet id donec ultrices tincidunt arcu. Sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Tortor vitae purus faucibus ornare. Egestas egestas"</p>
+                <p id="formContenttab">   * Rental Companies Links </p>
+                <NavItem id="formContenttab">
+                  <Link>Avis</Link>
+                </NavItem>
+                <NavItem id="formContenttab">
+                  <Link>Eenterprise </Link>
+                </NavItem>
+                <p>*Bill of Sale Daate must be:</p> 
+                <NavItem id="formContenttab">
+                  <Link >Example Bill Of Sale</Link>
+                </NavItem>
+                <NavItem>
+                  <Link id="formContenttab">Policy Lanauge NOV</Link>
+                  <p id="formContenttab">"Lorem ipsum , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet id donec ultrices tincidunt arcu. Sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Tortor vitae purus faucibus ornare. Egestas ege</p>
+                </NavItem>
+<p>Q & A</p>
+                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
+                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orci a.</p>
+                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
+                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orci a. Cursus </p>
+                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
+                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc</p>
+                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
+                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc.</p>
+              </Nav>
+            
+            </div>
+          </Card>
+        
+        </Col>
+      {/* </Container> */}
+      </Row>
+    </div>
+
+   
   );
 };
 export default connect(null, { updateCarNotOnPolicyCheckList })(
