@@ -10,9 +10,9 @@ const Dashboard = () => {
     //   <Nav>
     //     <p>Good Morning Good Evening and in case I don't see you Good night</p>
     //   </Nav>
-    <div id="body">
+    <div id="nav">
     {/* <Container> */}
-      <Navbar id="navid">
+      <Navbar id="nav">
         <Navbar.Collapse>
           <Navbar.Brand href="#home">Claims Prosessing</Navbar.Brand>
           <Navbar.Toggle />
@@ -21,7 +21,7 @@ const Dashboard = () => {
           <Link id="navLink" to={"/"}>List Of Claims </Link>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
+          <Navbar.Text id="nav">
             Signed in as: <a href="#login">Melissa Smith</a>
           </Navbar.Text>
         </Navbar.Collapse>

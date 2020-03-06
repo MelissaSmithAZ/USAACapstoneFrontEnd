@@ -23,6 +23,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
+  font-size: larger;
 }
 #cov-card2 {
   display: flex;
@@ -94,9 +95,23 @@
 }
 
 #card {
-  background-color: #f4f4f4;
+  background-color: #2c4c83;
   border-radius: 25px;
   margin-bottom: 50px;
+  opacity: .9;
+  border: black;
+  font-weight: bold;
+  height: 400px;
+
+}
+
+#editCard {
+  background-image: linear-gradient(#505b70, #acb8cc);
+  border: black;
+  font-weight: bold;
+  opacity: .9;
+  margin-right: 10px;
+  margin-left: 20px;
 
 }
 
@@ -118,6 +133,14 @@ font-weight: bold;
 }
 #sideNav {
  text-align: left;
+  background-image: linear-gradient(#505b70, #acb8cc);
+  border: black;
+  font-weight: bold;
+  opacity: .9;
+  margin-right: 20px;
+  
+ 
+  
 }
 #formContentbullet {
   text-indent: 10px;
@@ -130,4 +153,49 @@ font-weight: bold;
 }
 #centerTxt {
    align-content: center;
+}
+#provider{
+  /* background-color: #426195 ; */
+  background-image: linear-gradient(#426195, #acb8cc);
+  
+}
+#nav {
+  background-color: #2c4c83 ;
+  margin-bottom: 20px;
+  color: black;
+  font-size: 12pt;
+  font-weight:  bold ;
+
+}
+#btn {
+  background-color: #2c4c83;
+
+}
+#claimLink  {
+  color: black;
+
+}
+
+#tdata {
+  font-weight:  bold ;
+
+}
+#exampleText {
+  background-color:#8b8e96;
+  color: black;
+  font-size: large;
+  margin-right: 20%;
+  margin-left: 20%;
+}
+
+#tableStyl {
+  padding: 100px;
+}
+#formTxt {
+  font-size: medium;
+  font-weight: bold;
+}
+#linkFormTxt {
+  font-size: large;
+  color: #062b69
 }

@@ -71,7 +71,7 @@ const ClaimView = props => {
             id="editClaimLink"
             to={`/editTransportationCheckList/${theTransportationCheckList.id}`}
           >
-            Edit Rideshare <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
+            Edit RS <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
           </Link>
          
         );
@@ -79,7 +79,7 @@ const ClaimView = props => {
       }
     } else {
       return (
-        <Link id="addClaimLink" to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>Add Rideshare</Link>
+        <Link id="addClaimLink" to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>Add RS</Link>
       );
     }
     
@@ -102,7 +102,15 @@ const ClaimView = props => {
       
         );
       }
-    } else {
+    }
+    else if (theCarNotOnPolicyCheckList && carNotOnPolicyCheckList.claim && singleClaimView) {
+      if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id && theCarNotOnPolicyCheckList.coverage_decision ===  true) {
+        return <p>Coverage Extended NOV</p>
+
+      }
+    }
+    
+    else {
       return (
         <Link
           id="addClaimLink"
@@ -114,6 +122,7 @@ const ClaimView = props => {
     }
   };
   
+  // const denyCov = = () => {}
   const covNOV = () => {
 
     //testing to see if there is a carNotOnPolicy or transportation id will than link Add or edit display
@@ -138,19 +147,17 @@ const ClaimView = props => {
       {covNOV}
       <Container>
         <Row id="cov-card1">
-          <Col sm="6">
-            <Card id="card">
-              <CardTitle>
+          <Col sm="3">
+            <div >
+              
                 <h5>Claim Task Line</h5>
-              </CardTitle>
+             
               <Row>
                 <Col>{renderLinkTransportation()}</Col>
                 <Col>{renderLinkCarNotOnPolicy()}</Col>
-                <Col id="icon">
-                  Limits <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
-                </Col>
+                
               </Row>
-            </Card>
+            </div>
           </Col>
         </Row>
 
@@ -242,7 +249,7 @@ const ClaimView = props => {
                     singleClaimView.member &&
                     singleClaimView.member.pd_coverage}
                 </p>
-                {/* <p id="claimsList">Liability Decision</p> */}
+               
                 <p>
                   Driver: {singleClaimView && singleClaimView.claimant_name}{" "}
                   Rearended{" "}

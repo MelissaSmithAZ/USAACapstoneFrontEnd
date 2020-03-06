@@ -36,7 +36,7 @@ const App = props => {
 
   }, []);
   return (
-    <div className="App">
+    <div id="provider"  className="App">
       
       <Router>
         <Dashboard />
