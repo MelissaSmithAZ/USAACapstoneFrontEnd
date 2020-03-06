@@ -28,7 +28,9 @@ export default (state = initialState, action) => {
       };
     case types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS:
       return {
-        all: [action.payload, ...state.all]
+        // ...state,
+        all: [action.payload, ...state.all],
+
         
        
       };
