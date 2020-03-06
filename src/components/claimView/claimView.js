@@ -58,7 +58,7 @@ const ClaimView = props => {
     );
   }, [theCarNotOnPolicyCheckList]);
 
-
+//----- condition to render either Edit or add TransportationCheckList
   const renderLinkTransportation = () => {
     if (
       theTransportationCheckList &&
@@ -85,6 +85,8 @@ const ClaimView = props => {
     
   };
 
+  //----- condition statement to render either Edit or add TransportationCheckList
+
   const renderLinkCarNotOnPolicy = () => {
 
     if (
@@ -102,10 +104,9 @@ const ClaimView = props => {
       
         );
       }
-    }
-    else if (theCarNotOnPolicyCheckList && carNotOnPolicyCheckList.claim && singleClaimView) {
-      if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id && theCarNotOnPolicyCheckList.coverage_decision ===  true) {
-        return <p>Coverage Extended NOV</p>
+    } else if (theCarNotOnPolicyCheckList && theCarNotOnPolicyCheckList.coverage_decision) {
+      if ( theCarNotOnPolicyCheckList.coverage_decision ===  true) {
+        return (<p>Coverage Extended NOV</p>)
 
       }
     }

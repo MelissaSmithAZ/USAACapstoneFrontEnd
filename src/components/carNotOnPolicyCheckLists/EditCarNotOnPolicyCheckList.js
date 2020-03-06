@@ -72,7 +72,9 @@ const EditCarNotOnPolicyCheckList = props => {
       final_letterMember: theFinalLetterMember,
       coverage_decision: theCoverageDecision,
       claim_id: theCarNotOnPolicyCheckList.claim.id
-    }, props.history.push("/claims/theCarNotOnPolicyCheckList.claim.claim_number"));
+    }, 
+      props
+    )
   };
   return (
     <div>

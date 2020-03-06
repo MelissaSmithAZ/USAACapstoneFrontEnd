@@ -59,11 +59,9 @@ const AddCarNotOnPolicyCheckList = props => {
         coverage_decision: theCoverageDecision,
         // claim_id: theCarNotOnPolicyCheckList.claim.id
         claim_id: singleClaimView.id
-      },
-     );
-
-
-    
+        },
+        props
+    )
   };
 
   return (

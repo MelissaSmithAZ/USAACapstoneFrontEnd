@@ -74,7 +74,7 @@ const EditTransportationCheckList = props => {
         coverage_decision: theCoverageDecision,
         claim_id: theTransportationCheckList.claim.id
       },
-      props.history.goBack()
+      props
     );
 
     console.log(
