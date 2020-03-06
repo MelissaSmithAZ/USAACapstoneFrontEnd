@@ -36,7 +36,9 @@ export const fetchOneCarNotOnPolicyCheckList = id => async dispatch => {
     });
   }
 };
-export const addCarNotOnPolicyCheckList = newCarNotOnPolicyCheckList => async dispatch => {
+export const addCarNotOnPolicyCheckList = (newCarNotOnPolicyCheckList, props )=> async dispatch => {
+
+  
   // console.log(
   //   "**ADD CarNotONPolicy  ACTION",
   //   newCarNotOnPolicyCheckList
@@ -46,11 +48,15 @@ export const addCarNotOnPolicyCheckList = newCarNotOnPolicyCheckList => async di
   });
   try {
     let response = await axios.post(BASE_URL + `/${newCarNotOnPolicyCheckList.claim_id}`, newCarNotOnPolicyCheckList);
-    console.log("***response add", newCarNotOnPolicyCheckList)
+    console.log("***HISTORY ", props)
+
     dispatch({
       type: types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS,
-      payload: response.data
-    });
+      payload: response.data,
+  
+    })
+    props.history.push(`/claims/${newCarNotOnPolicyCheckList.claim_id}`)
+
   } catch (err) {
     dispatch({
       type: types.ADD_CARNOTONPOLICYCHECKLIST_FAILED,
