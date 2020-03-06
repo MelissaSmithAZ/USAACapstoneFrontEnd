@@ -48,7 +48,7 @@ export const addCarNotOnPolicyCheckList = (newCarNotOnPolicyCheckList, props )=>
   });
   try {
     let response = await axios.post(BASE_URL + `/${newCarNotOnPolicyCheckList.claim_id}`, newCarNotOnPolicyCheckList);
-    console.log("***HISTORY ", props)
+    console.log("***HISTORY ", newCarNotOnPolicyCheckList)
 
     dispatch({
       type: types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS,

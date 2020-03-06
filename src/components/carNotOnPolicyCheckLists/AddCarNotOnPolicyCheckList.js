@@ -64,8 +64,7 @@ const AddCarNotOnPolicyCheckList = props => {
 
 
     
-     props.history.push(`/claims/${singleClaimView.claim_number}`);
-  }
+  };
 
   return (
     <div>
