@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
 
         //returning an object the new instance of state
         //we are creating acopy of all the properties of the old object and inserthem into the new object literal, and be able to override all prperties
-        // ...state,
+        ...state,
         all: [action.payload, ...state.all],
 
         
