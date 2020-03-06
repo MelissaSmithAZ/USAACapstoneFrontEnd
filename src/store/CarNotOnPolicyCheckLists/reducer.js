@@ -28,6 +28,9 @@ export default (state = initialState, action) => {
       };
     case types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS:
       return {
+
+        //returning an object the new instance of state
+        //we are creating acopy of all the properties of the old object and inserthem into the new object literal, and be able to override all prperties
         // ...state,
         all: [action.payload, ...state.all],
 

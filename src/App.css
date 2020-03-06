@@ -152,7 +152,8 @@ font-weight: bold;
   margin-left: 25px;
 }
 #centerTxt {
-   align-content: center;
+  text-align: center;
+  font-weight: bold;
 }
 #provider{
   /* background-color: #426195 ; */
@@ -198,4 +199,10 @@ font-weight: bold;
 #linkFormTxt {
   font-size: large;
   color: #062b69
+}
+#linkFormTxtNav {
+  font-size: large;
+  color: #062b69;
+   margin-right: 10px;
+  margin-left: 25px;
 }
