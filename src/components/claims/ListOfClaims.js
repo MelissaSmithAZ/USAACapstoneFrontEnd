@@ -29,14 +29,15 @@ const ListOfClaims = props => {
     // const [query, setQuery] = useState("");
   const claimsList = claims.map(claim => (
     <tr>
-      <Link to={`/claims/${claim.claim_number}`}>
+      <Link id="claimLink"to={`/claims/${claim.claim_number}`}>
         <th scope="row">{claim.claim_number}</th>
       </Link>
-      <td>{claim.member.member_name}</td>
-      <td>{claim.claimant_name}</td>
-      <td>{claim.claimant_auto}</td>
+      <td id="tdata">{claim.member.member_name}</td>
+      <td id="tdata">{claim.claimant_name}</td>
+      <td id="tdata"  >{claim.claimant_auto}</td>
       <td>
         <Button
+          id="btn"
           type="submit"
           onClick={() => props.removeClaim(claim.id)}
           size="xs"
@@ -53,10 +54,10 @@ const ListOfClaims = props => {
     return (
       <div id="listBackground">
         <Container id='claimsList'>
-        <Table striped >
-          <thead>
-            <tr>
-              <th>Claim Number</th>
+        <Table striped hover >
+          <thead >
+              <tr>
+              <th >Claim Number</th>
               <th>Member Name</th>
               <th>Claimant Name</th>
               <th>Handle</th>

@@ -9,8 +9,11 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText
+  FormText,
+  Row,
+  Card
 } from "reactstrap";
+import SideNavForm from "../dashboard/SideNavForm";
 
 const EditTransportationCheckList = props => {
   const [singleClaimView, setSingleClaimView] = useState({});
@@ -59,178 +62,187 @@ const EditTransportationCheckList = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.updateTransportationCheckList({
-      id: theTransportationCheckList.id,
-      call: theCall,
-      call_doc: theCallDoc,
-      letter: theLetter,
-      claimant_letter: theClaimantLetter,
-      claimant_call: theClaimantCall,
-      claimant_call_doc: theClaimantCallDoc,
-      coverage_decision: theCoverageDecision,
-      claim_id: theTransportationCheckList.claim.id
-    },props.history.goBack());
-    
-      console.log("theTransporationCheckList claim_id", theTransportationCheckList.claim_id)
-      console.log("singleClaimView id", singleClaimView)
-      console.log("TRANSPORTATION id", transportationCheckList)
-      console.log("**THE TRANSPORTATION id", theTransportationCheckList)
+    props.updateTransportationCheckList(
+      {
+        id: theTransportationCheckList.id,
+        call: theCall,
+        call_doc: theCallDoc,
+        letter: theLetter,
+        claimant_letter: theClaimantLetter,
+        claimant_call: theClaimantCall,
+        claimant_call_doc: theClaimantCallDoc,
+        coverage_decision: theCoverageDecision,
+        claim_id: theTransportationCheckList.claim.id
+      },
+      props.history.goBack()
+    );
+
+    console.log(
+      "theTransporationCheckList claim_id",
+      theTransportationCheckList.claim_id
+    );
+    console.log("singleClaimView id", singleClaimView);
+    console.log("TRANSPORTATION id", transportationCheckList);
+    console.log("**THE TRANSPORTATION id", theTransportationCheckList);
     //   console.log("Claim id", claim.id)
   };
 
-//   function handleChange(e) {
-//     const { name, value } = e.target;
-
-//     setTheTransportationCheckList({
-//     //   ...theTransportationCheckList,
-//       [name]: value
-//     });
-//   }
-//   function handeCheckBox(e) {
-//     const { name, value } = e.target;
-//     setTheCall({
-//       [name]: value
-//     });
-//   }
   return (
-    <Form onSubmit={handleSubmit}>
-      <p>summary of items needed and link to resource</p>
-      <FormGroup row>
-        <Label for="checkbox2" sm={2}>
-          Member Called
-        </Label>
-        <Col sm={{ size: 10 }}>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="checkbox"
-                id="checkbox2"
-                name="call"
-                checked={theCall}
-                onChange={() => setTheCall(!theCall)}
-              />{" "}
-              Member Called
-            </Label>
-          </FormGroup>
-        </Col>
-      </FormGroup>
-      <p>Call Doc must cover: x,y,z</p>
+    <div>
+      <Row>
+        <Col sm="8">
+          <Card id="editCard">
+            <Form onSubmit={handleSubmit}>
+              <a id="linkFormTxt"href="https://www.google.com" target="_blank">
+                RideShare Procdure
+              </a>
+              <FormGroup check id="form">
+                <Label for="checkbox2"></Label>
 
-      <FormGroup row>
-        <Label for="exampleText" sm={2}>
-          Member Call Doc
-        </Label>
-        <Col sm={10}>
-          <Input
-            type="textarea"
-            id="exampleText"
-            name="call_doc"
-            value={theCallDoc}
-            onChange={(e) => setTheCallDoc(e.target.value)}
-          />
-        </Col>
-      </FormGroup>
+                <FormGroup check>
+                  <Label check>
+                    <Input
+                      type="checkbox"
+                      id="checkbox2"
+                      name="call"
+                      checked={theCall}
+                      onChange={() => setTheCall(!theCall)}
+                    />{" "}
+                    Member Called
+                  </Label>
+                </FormGroup>
+              </FormGroup>
+              <p id="formTxt">Call Doc must cover: * Advise of Coverage Issue
+              * Phone number and name </p>
+              
 
-      <FormGroup row>
-        <Label for="checkbox2" sm={2}>
-          Initial Member Leter
-        </Label>
-        <Col sm={{ size: 10 }}>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="checkbox"
-                id="checkbox2"
-                name="letter"
-                checked={theLetter}
-                onChange={() => setTheLetter(!theLetter)}
-              />{" "}
-              <Link>Send Member Leter</Link>
-            </Label>
-          </FormGroup>
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="checkbox2" sm={2}>
-          Claimant Called
-        </Label>
-        <Col sm={{ size: 10 }}>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="checkbox"
-                id="checkbox2"
-                name="claimant_call"
-                onChange={() => setTheClaimantCall(!theClaimantCall)}
-                checked={theClaimantCall}
-              />{" "}
-              Claimant Called
-            </Label>
-          </FormGroup>
-        </Col>
-      </FormGroup>
-      <p>Call Doc must cover: x,y,z</p>
+              <FormGroup row id="form">
+                <Label for="exampleText" >
+                 
+                </Label>
+               
+                  <Input
+                    type="textarea"
+                    id="exampleText"
+                    name="call_doc"
+                    value={theCallDoc}
+                    onChange={e => setTheCallDoc(e.target.value)}
+                  />
+              
+              </FormGroup>
 
-      <FormGroup row>
-        <Label for="exampleText" sm={2}>
-          Claimat Call Doc
-        </Label>
-        <Col sm={10}>
-          <Input
-            type="textarea"
-            id="exampleText"
-            name="claimant_call_doc"
-            value={theClaimantCallDoc}
-                      onChange={(e) => setTheClaimantCallDoc(e.target.value)}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="checkbox2" sm={2}>
-          Initial Claimant Leter
-        </Label>
-        <Col sm={{ size: 10 }}>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="checkbox"
-                id="checkbox2"
-                name="claimant_letter"
-                checked={theClaimantLetter}
-                onChange={() => setTheClaimantLetter(!theClaimantLetter)}
-              />{" "}
-              <Link>Send Claimant Leter</Link>
-            </Label>
-          </FormGroup>
-        </Col>
-      </FormGroup>
+              <FormGroup >
+                <Label for="checkbox2" >
+                 
+                </Label>
+               
+                  <FormGroup check>
+                    <Label check>
+                      <Input
+                        type="checkbox"
+                        id="checkbox2"
+                        name="letter"
+                        checked={theLetter}
+                        onChange={() => setTheLetter(!theLetter)}
+                      />{" "}
+                    <Link id="linkFormTxt" >Send Member Leter</Link>
+                    </Label>
+                  </FormGroup>
+            
+              </FormGroup>
+              <FormGroup >
+                <Label for="checkbox2">
+          
+                </Label>
+                
+                  <FormGroup check>
+                    <Label check>
+                      <Input
+                        type="checkbox"
+                        id="checkbox2"
+                        name="claimant_call"
+                        onChange={() => setTheClaimantCall(!theClaimantCall)}
+                        checked={theClaimantCall}
+                      />{" "}
+                      Claimant Called
+                    </Label>
+                  </FormGroup>
+               
+              </FormGroup>
+              <p id="formTxt">Call Doc must include: * Who was called * Phone number</p>
 
-      <p>Once all information received make final decision</p>
 
-      <FormGroup row>
-        <Label for="exampleSelect" sm={2}>
-          Select
-        </Label>
-        <Col sm={10}>
-          <Input
-            type="select"
-            id="exampleSelect"
-            name="coverage_decision"
-                      onChange={(e) => setTheCoverageDecision(e.target.value)}
-          >
-            <option>choose Coverage Decision</option>
-            <option value={true}>Coverage Confirmed</option>
-            <option value={false}>Coverage Denied</option>
-          </Input>
-        </Col>
-      </FormGroup>
+              <FormGroup row>
+                <Label for="exampleText">
+                  
+                </Label>
+               
+                  <Input
+                    type="textarea"
+                  id="exampleText"
+                    name="claimant_call_doc"
+                    value={theClaimantCallDoc}
+                    onChange={e => setTheClaimantCallDoc(e.target.value)}
+                  />
+                
+              </FormGroup>
+              <FormGroup >
+                <Label for="checkbox2" id="formTxt">
+                  Initial Claimant Leter
+                </Label>
+                
+                  <FormGroup check>
+                    <Label check>
+                      <Input
+                        type="checkbox"
+                        id="checkbox2"
+                        name="claimant_letter"
+                        checked={theClaimantLetter}
+                        onChange={() =>
+                          setTheClaimantLetter(!theClaimantLetter)
+                        }
+                      />{" "}
+                    <Link id="linkFormTxt">Send Claimant Leter</Link>
+                    </Label>
+                  </FormGroup>
+               
+              </FormGroup>
 
-      <FormGroup check row>
-        <Col sm={{ size: 10, offset: 2 }}>
-          <Button>Submit</Button>
+              <p id="formTxt">Once all information received make final decision</p>
+
+              <FormGroup row>
+                <Label for="exampleSelect" id="formTxt" >
+                
+                </Label>
+                
+                  <Input
+                    type="select"
+                    id="exampleText"
+                    name="coverage_decision"
+                    onChange={e => setTheCoverageDecision(e.target.value)}
+                  >
+                  <option id="exampleText">choose Coverage Decision</option>
+                  <option id="exampleText"value={true}>Coverage Confirmed</option>
+                  <option id="exampleText"value={false}>Coverage Denied</option>
+                  </Input>
+              
+              </FormGroup>
+
+              <FormGroup check>
+               
+                  <Button>Submit</Button>
+                
+              </FormGroup>
+            </Form>
+          </Card>
         </Col>
-      </FormGroup>
-    </Form>
+        <Col sm="4">
+          <Card id="sideNav">
+            <SideNavForm />
+          </Card>
+        </Col>
+      </Row>
+    </div>
   );
 };
 

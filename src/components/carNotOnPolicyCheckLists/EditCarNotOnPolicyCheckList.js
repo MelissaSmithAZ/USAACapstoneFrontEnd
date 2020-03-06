@@ -17,6 +17,7 @@ import {
   NavItem
 
 } from "reactstrap";
+import SideNavForm from "../dashboard/SideNavForm"
 
 const EditCarNotOnPolicyCheckList = props => {
     
@@ -76,11 +77,9 @@ const EditCarNotOnPolicyCheckList = props => {
   return (
     <div>
       <Row>
-    {/* <Container> */}
-
-    {/* <Row>  */}
+ 
     <Col sm="8">
-      <Card>
+      <Card id="editCard">
       <Form onSubmit={handleSubmit}>
 
       
@@ -88,7 +87,7 @@ const EditCarNotOnPolicyCheckList = props => {
 
         <FormGroup id="form">
           
-          {/* <Col sm={{ size: 10 }}> */}
+         
             <FormGroup check id="form">
               <Label check>
                 <Input
@@ -101,17 +100,17 @@ const EditCarNotOnPolicyCheckList = props => {
                 Member Called
               </Label>
             </FormGroup>
-          {/* </Col> */}
+         
         </FormGroup>
           <p>Call Doc must cover: </p>
           <Link>* Advise of Coverage Issue</Link>
           <p>* Phone number and name </p>
 
         <FormGroup id="form">
-          <Label for="exampleText" sm={2}>
+          <Label for="exampleText" >
             
           </Label>
-          {/* <Col sm={10}> */}
+         
             <Input
               type="textarea"
               id="exampleText"
@@ -119,7 +118,7 @@ const EditCarNotOnPolicyCheckList = props => {
               value={theCallDoc}
               onChange={e => setTheCallDoc(e.target.value)}
             />
-          {/* </Col> */}
+         
           </FormGroup>
           
         <FormGroup >
@@ -129,7 +128,7 @@ const EditCarNotOnPolicyCheckList = props => {
                 * Additional Insurance CDW / LDW
           </Label>
             
-          {/* <Col sm={{ size: 10 }}> */}
+         
             <FormGroup check>
               <Label check>
                 <Input
@@ -142,13 +141,13 @@ const EditCarNotOnPolicyCheckList = props => {
                 Rental Agreement
               </Label>
             </FormGroup>
-          {/* </Col> */}
+         
         </FormGroup>
         <FormGroup>
           <Label for="checkbox2" sm={2}>
            
           </Label>
-          {/* <Col sm={{ size: 10 }}> */}
+         
             <FormGroup check>
               <Label check>
                 <Input
@@ -161,14 +160,14 @@ const EditCarNotOnPolicyCheckList = props => {
                 Claimant Called
               </Label>
             </FormGroup>
-          {/* </Col> */}
+       
           </FormGroup>
           
           <FormGroup id="form">
             <Label for="exampleText" >
               <p>Call Doc must include: * Who was called * Phone number</p>
             </Label>
-            {/* <Col sm={10}> */}
+           
             <Input
               type="textarea"
               id="exampleText"
@@ -176,7 +175,7 @@ const EditCarNotOnPolicyCheckList = props => {
               value={theClaimantCallDoc}
               onChange={e => setTheClaimantCallDoc(e.target.value)}
             />
-            {/* </Col> */}
+           
           </FormGroup>
 
   
@@ -184,7 +183,7 @@ const EditCarNotOnPolicyCheckList = props => {
           <Label for="checkbox2" sm={2}>
             Initial Claimant Leter
           </Label>
-          {/* <Col sm={{ size: 10 }}> */}
+          
             <FormGroup check>
               <Label check>
                 <Input
@@ -199,84 +198,47 @@ const EditCarNotOnPolicyCheckList = props => {
                 <Link>Send Decision Letter</Link>
               </Label>
             </FormGroup>
-          {/* </Col> */}
+         
         </FormGroup>
         <FormGroup >
           <Label for="exampleSelect" sm={2}>
             Select
           </Label>
-          {/* <Col sm={10}> */}
+        
             <Input
-              type="select"
-              id="exampleSelect"
-              name="coverage_decision"
-              onChange={e => setTheCoverageDecision(e.target.value)}
+                  type="select"
+                  id="exampleText"
+                  name="coverage_decision"
+                 
+                  onChange={e => setTheCoverageDecision(e.target.value)}
             >
-              <option>choose Coverage Decision</option>
-              <option value={true}>Coverage Confirmed</option>
-              <option value={false}>Coverage Denied</option>
+                  <option id="exampleText" >choose Coverage Decision</option>
+                  <option id="exampleText" value={true}>Coverage Confirmed</option>
+                  <option id="exampleText" value={false}>Coverage Denied</option>
             </Input>
-          {/* </Col> */}
+         
         </FormGroup>
 
         <FormGroup check >
-          {/* <Col sm={{ size: 10, offset: 2 }}> */}
+        
             <Button>Submit</Button>
-          {/* </Col> */}
+         
           </FormGroup>
        
         </Form>
       </Card>
         </Col>
-      {/* </Row>  */}
-      {/* <Row> */}
-        {/* <Col sm="4">
-          <Card>
-            This is a resource card
-          </Card>
-        </Col> */}
-      {/* </Row> */}
-    {/* </Container> */}
+     
     <Col sm="4">
-      {/* <Container> */}
-      <Card>
-            <div id="sideNav">
-              <h4 id="centerTxt">Helpful Hints</h4>
-              <Nav vertical>
-                <p id="formContentbullet">  * Script for advising Coverage issue </p>
-
-                <p id="formContenttab">Lor magna aliqua. Laoreet id donec ultrices tincidunt arcu. Sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Tortor vitae purus faucibus ornare. Egestas egestas"</p>
-                <p id="formContenttab">   * Rental Companies Links </p>
-                <NavItem id="formContenttab">
-                  <Link>Avis</Link>
-                </NavItem>
-                <NavItem id="formContenttab">
-                  <Link>Eenterprise </Link>
-                </NavItem>
-                <p>*Bill of Sale Daate must be:</p> 
-                <NavItem id="formContenttab">
-                  <Link >Example Bill Of Sale</Link>
-                </NavItem>
-                <NavItem>
-                  <Link id="formContenttab">Policy Lanauge NOV</Link>
-                  <p id="formContenttab">"Lorem ipsum , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet id donec ultrices tincidunt arcu. Sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Tortor vitae purus faucibus ornare. Egestas ege</p>
-                </NavItem>
-<p>Q & A</p>
-                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
-                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orci a.</p>
-                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
-                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orci a. Cursus </p>
-                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
-                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc</p>
-                <p id="formContentbullet">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
-                <p>Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc.</p>
-              </Nav>
+      
+          <Card id="sideNav">
             
-            </div>
+            <SideNavForm />
+        
           </Card>
         
         </Col>
-      {/* </Container> */}
+     
       </Row>
     </div>
 
