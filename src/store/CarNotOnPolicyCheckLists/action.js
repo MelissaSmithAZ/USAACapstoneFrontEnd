@@ -55,7 +55,8 @@ export const addCarNotOnPolicyCheckList = (newCarNotOnPolicyCheckList, props )=>
       payload: response.data,
   
     })
-    props.history.push(`/claims/${newCarNotOnPolicyCheckList.claim_id}`)
+    props.history.goBack()
+    // props.history.push(`/claims/${newCarNotOnPolicyCheckList.claim_id}`)
 
   } catch (err) {
     dispatch({

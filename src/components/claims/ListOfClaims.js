@@ -28,7 +28,7 @@ const ListOfClaims = props => {
     console.log("Claims.number in listofclaims", claims.number)
     // const [query, setQuery] = useState("");
   const claimsList = claims.map(claim => (
-    <tr>
+    <tr key={claim.id}>
       <Link id="claimLink"to={`/claims/${claim.claim_number}`}>
         <th scope="row">{claim.claim_number}</th>
       </Link>
