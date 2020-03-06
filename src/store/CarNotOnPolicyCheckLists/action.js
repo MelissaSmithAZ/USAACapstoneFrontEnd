@@ -46,7 +46,7 @@ export const addCarNotOnPolicyCheckList = newCarNotOnPolicyCheckList => async di
   });
   try {
     let response = await axios.post(BASE_URL + `/${newCarNotOnPolicyCheckList.claim_id}`, newCarNotOnPolicyCheckList);
-    console.log("***response add", response.data)
+    console.log("***response add", newCarNotOnPolicyCheckList)
     dispatch({
       type: types.ADD_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data
@@ -76,6 +76,7 @@ export const updateCarNotOnPolicyCheckList = (
       BASE_URL + `/${updatedCarNotOnPolicyCheckList.claim_id}`,
       updatedCarNotOnPolicyCheckList
     );
+    
     dispatch({
       type: types.UPDATE_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data
@@ -99,7 +100,7 @@ export const removeCarNotOnPolicyCheckList = id => async dispatch => {
     });
   } catch (err) {
     dispatch({
-      type: types.UPDATE_CARNOTONPOLICYCHECKLIST_FAILED,
+      type: types.REMOVE_CARNOTONPOLICYCHECKLIST_FAILED,
       payload: err
     });
   }

@@ -60,8 +60,10 @@ const AddCarNotOnPolicyCheckList = props => {
         // claim_id: theCarNotOnPolicyCheckList.claim.id
         claim_id: singleClaimView.id
       },
-      props.history.goBack()
-    );
+     props.history.push(`/claims/${singleClaimView.claim_number}`));
+
+
+    
   };
 
   return (
