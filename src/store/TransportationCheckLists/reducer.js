@@ -35,11 +35,11 @@ export default (state = initialState, action) => {
     case types.REMOVE_TRANSPORTATIONCHECKLIST_SUCCESS:
       return {
         ...state,
-        all: state.all.filter(
-          transportationCheckList =>
-            transportationCheckList.id !== action.payload.id
-        )
+        all: [action.payload, ...state.all],
+
+       
       };
+
     case types.UPDATE_TRANSPORTATIONCHECKLIST_SUCCESS:
       console.log("action payload", action.payload);
       return {

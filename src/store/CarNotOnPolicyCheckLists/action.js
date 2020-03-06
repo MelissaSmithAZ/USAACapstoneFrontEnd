@@ -66,7 +66,7 @@ export const addCarNotOnPolicyCheckList = (newCarNotOnPolicyCheckList, props )=>
   }
 };
 export const updateCarNotOnPolicyCheckList = (
-  updatedCarNotOnPolicyCheckList
+  updatedCarNotOnPolicyCheckList, props
 ) => async dispatch => {
   console.log(
     "**UPDATED CarNotONPolicy  ACTION",
@@ -87,7 +87,9 @@ export const updateCarNotOnPolicyCheckList = (
     dispatch({
       type: types.UPDATE_CARNOTONPOLICYCHECKLIST_SUCCESS,
       payload: response.data
-    });
+    })
+    props.history.goBack()
+
   } catch (err) {
     dispatch({
       type: types.UPDATE_CARNOTONPOLICYCHECKLIST_FAILED,

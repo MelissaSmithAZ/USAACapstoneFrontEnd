@@ -37,7 +37,7 @@ export const fetchOneTransportationCheckLisat = id => async dispatch => {
     });
   }
 };
-export const addTransportationCheckList = newTransportationCheckList => async dispatch => {
+export const addTransportationCheckList = (newTransportationCheckList, props) => async dispatch => {
   dispatch({
     type: types.ADD_TRANSPORTATIONCHECKLIST_PENDING
   });
@@ -46,7 +46,11 @@ export const addTransportationCheckList = newTransportationCheckList => async di
     dispatch({
       type: types.ADD_TRANSPORTATIONCHECKLIST_SUCCESS,
       payload: response.data
-    });
+    })
+    props.history.goBack()
+
+
+
   } catch (err) {
     dispatch({
       type: types.ADD_TRANSPORTATIONCHECKLIST_FAILED,
@@ -56,7 +60,7 @@ export const addTransportationCheckList = newTransportationCheckList => async di
 };
 
 export const updateTransportationCheckList = (
-  updatedTransportationCheckList 
+  updatedTransportationCheckList , props
 ) => async dispatch => {
   console.log(
     "UPDATED TransportationCheckList ACTION",
@@ -76,7 +80,9 @@ export const updateTransportationCheckList = (
     dispatch({
       type: types.UPDATE_TRANSPORTATIONCHECKLIST_SUCCESS,
       payload: response.data
-    });
+    })
+    props.history.goBack()
+
   } catch (err) {
     dispatch({
       type: types.UPDATE_TRANSPORTATIONCHECKLIST_FAILED,
