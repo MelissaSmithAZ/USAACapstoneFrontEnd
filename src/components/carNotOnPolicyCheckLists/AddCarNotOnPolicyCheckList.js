@@ -24,7 +24,7 @@ const AddCarNotOnPolicyCheckList = props => {
   const [theClaimantCallDoc, setTheClaimantCallDoc] = useState("");
   const [theFinalLetterMember, setTheFinalLetterMember] = useState(false);
   const [theClaimantCall, setTheClaimantCall] = useState(false);
-  const [theCoverageDecision, setTheCoverageDecision] = useState(false);
+  const [theCoverageDecision, setTheCoverageDecision] = useState(null);
   const [theCarNotOnPolicyCheckList, setTheCarNotOnPolicyCheckList] = useState(
     {}
   );
@@ -67,16 +67,19 @@ const AddCarNotOnPolicyCheckList = props => {
   return (
     <div>
       <Row>
+
         <Col sm="8">
           <Card id="editCard">
             <Form onSubmit={handleSubmit}>
-              <a href="https://www.google.com" target="_blank">
-                None Owned Vehicle Procdure
-              </a>
+
+
+              <a id="linkFormTxt" href='https://www.google.com' target="_blank">None Owned Vehicle Procdure</a>
 
               <FormGroup id="form">
+
+
                 <FormGroup check id="form">
-                  <Label check>
+                  <Label check >
                     <Input
                       type="checkbox"
                       id="checkbox2"
@@ -85,15 +88,18 @@ const AddCarNotOnPolicyCheckList = props => {
                       onChange={() => setTheCallMember(!theCallMember)}
                     />{" "}
                     Member Called
-                  </Label>
+              </Label>
                 </FormGroup>
-              </FormGroup>
-              <p>Call Doc must cover: </p>
-              <Link>* Advise of Coverage Issue</Link>
-              <p>* Phone number and name </p>
 
-              <FormGroup id="form">
-                <Label for="exampleText" sm={2}></Label>
+              </FormGroup>
+              <p id="formTxt">Call Doc must cover:  * Advise of Coverage Issue
+           * Phone number and name</p>
+
+
+              <FormGroup id="form" row>
+                <Label for="exampleText" >
+
+                </Label>
 
                 <Input
                   type="textarea"
@@ -102,13 +108,16 @@ const AddCarNotOnPolicyCheckList = props => {
                   value={theCallDoc}
                   onChange={e => setTheCallDoc(e.target.value)}
                 />
+
               </FormGroup>
 
-              <FormGroup>
-                <Label for="checkbox2">
-                  Rental Agreement: * Confirm Renter / Driver * Additional
-                  Insurance CDW / LDW
-                </Label>
+              <FormGroup >
+                <Label for="checkbox2" >
+                  Rental Agreement:
+                      * Confirm Renter / Driver
+                      * Additional Insurance CDW / LDW
+          </Label>
+
 
                 <FormGroup check>
                   <Label check>
@@ -116,17 +125,18 @@ const AddCarNotOnPolicyCheckList = props => {
                       type="checkbox"
                       id="checkbox2"
                       name="rental_agreement"
-                      onChange={() =>
-                        setTheRentalAgreement(!theRentalAgreement)
-                      }
+                      onChange={() => setTheRentalAgreement(!theRentalAgreement)}
                       checked={theRentalAgreement}
                     />{" "}
                     Rental Agreement
-                  </Label>
+              </Label>
                 </FormGroup>
+
               </FormGroup>
               <FormGroup>
-                <Label for="checkbox2" sm={2}></Label>
+                <Label for="checkbox2" sm={2}>
+
+                </Label>
 
                 <FormGroup check>
                   <Label check>
@@ -138,13 +148,14 @@ const AddCarNotOnPolicyCheckList = props => {
                       checked={theClaimantCall}
                     />{" "}
                     Claimant Called
-                  </Label>
+              </Label>
                 </FormGroup>
-              </FormGroup>
 
-              <FormGroup id="form">
-                <Label for="exampleText">
-                  <p>Call Doc must include: * Who was called * Phone number</p>
+              </FormGroup>
+              <p id="formTxt">Call Doc must include: * Who was called * Phone number</p>
+
+              <FormGroup row id="form">
+                <Label for="exampleText" >
                 </Label>
 
                 <Input
@@ -154,12 +165,14 @@ const AddCarNotOnPolicyCheckList = props => {
                   value={theClaimantCallDoc}
                   onChange={e => setTheClaimantCallDoc(e.target.value)}
                 />
+
               </FormGroup>
 
-              <FormGroup>
-                <Label for="checkbox2" sm={2}>
-                  Initial Claimant Leter
-                </Label>
+
+              <FormGroup >
+                <Label for="checkbox2">
+                  Initial Claimant Letter
+          </Label>
 
                 <FormGroup check>
                   <Label check>
@@ -172,13 +185,17 @@ const AddCarNotOnPolicyCheckList = props => {
                         setTheFinalLetterMember(!theFinalLetterMember)
                       }
                     />{" "}
-                    <Link>Send Decision Letter</Link>
+                    <Link id="linkFormTxt" >Send Decision Letter</Link>
                   </Label>
                 </FormGroup>
+
               </FormGroup>
-              <FormGroup>
-                <Label for="exampleSelect" sm={2}>
-                  Select
+              <p id="formTxt">Once all information received make final decision</p>
+
+
+              <FormGroup row>
+                <Label for="exampleSelect" id="formTxt" >
+
                 </Label>
 
                 <Input
@@ -188,27 +205,32 @@ const AddCarNotOnPolicyCheckList = props => {
                   onChange={e => setTheCoverageDecision(e.target.value)}
                 >
                   <option id="exampleText">choose Coverage Decision</option>
-                  <option id="exampleText" value={true}>
-                    Coverage Confirmed
-                  </option>
-                  <option id="exampleText" value={false}>
-                    Coverage Denied
-                  </option>
+                  <option id="exampleText" value={true}>Coverage Confirmed</option>
+                  <option id="exampleText" value={false}>Coverage Denied</option>
                 </Input>
+
               </FormGroup>
 
-              <FormGroup check>
-                <Button>Submit</Button>
+              <FormGroup check >
+
+                <Button id="buttonAddEdit">Submit</Button>
+
               </FormGroup>
+
             </Form>
           </Card>
         </Col>
 
         <Col sm="4">
+
           <Card id="sideNav">
+
             <SideNavForm />
+
           </Card>
+
         </Col>
+
       </Row>
     </div>
   );

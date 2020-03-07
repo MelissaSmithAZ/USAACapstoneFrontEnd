@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
-import { Card, CardTitle, CardText, Button, Row, Col, Container, Alert, CardImg, CardBody, CardSubtitle } from "reactstrap";
+import {
+  Card,
+  CardTitle,
+  CardText,
+  Button,
+  Row,
+  Col,
+  Container,
+  Alert,
+  CardImg,
+  CardBody,
+  CardSubtitle
+} from "reactstrap";
 import { updateClaim } from "../../store/Claims/action";
 import { fetchAllTransportationCheckList } from "../../store/TransportationCheckLists/action";
 import { fetchAllCarNotOnPolicyCheckLists } from "../../store/CarNotOnPolicyCheckLists/action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBan, faDollarSign } from '@fortawesome/free-solid-svg-icons'
-
-;
+import { faBan, faDollarSign, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 const ClaimView = props => {
   // const claims = useSelector(state => state.claims.all);
   //getter setter
@@ -23,7 +33,7 @@ const ClaimView = props => {
   const [visible, setVisible] = useState(true);
 
   const onDismiss = () => setVisible(false);
-  
+
   const claims = useSelector(state => state.claims.all);
 
   const transportationCheckList = useSelector(
@@ -35,37 +45,33 @@ const ClaimView = props => {
   );
 
   useEffect(() => {
-    
     setSingleClaimView(
       claims.find(claim => claim.claim_number === Number(props.match.params.id))
     );
   }, [claims]);
 
-  console.log("PROPS", props)
- 
+  console.log("PROPS", props);
 
   useEffect(() => {
-   
     setTheTransportationCheckList(
       transportationCheckList.find(cl => cl.claim.id === singleClaimView.id)
     );
   }, [theTransportationCheckList]);
 
   useEffect(() => {
-   
     setTheCarNotOnPolicyCheckList(
       carNotOnPolicyCheckList.find(cl => cl.claim.id === singleClaimView.id)
     );
   }, [theCarNotOnPolicyCheckList]);
 
-//----- condition to render either Edit or add TransportationCheckList
+  //----- condition to render either Edit or add TransportationCheckList
   const renderLinkTransportation = () => {
     if (
       theTransportationCheckList &&
       theTransportationCheckList.claim &&
       singleClaimView
     ) {
-      if (theTransportationCheckList.claim.id === singleClaimView.id) {
+      if (theTransportationCheckList.claim.id === singleClaimView.id && theTransportationCheckList.coverage_decision === null) {
         return (
           <Link
             id="editClaimLink"
@@ -73,45 +79,75 @@ const ClaimView = props => {
           >
             Edit RS <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
           </Link>
-         
         );
-        
+      }
+      else if (theTransportationCheckList.coverage_decision === true) {
+        return (
+          <Link
+            id="covClear"
+            to={`/editTransportationCheckList/${theTransportationCheckList.id}`}
+          >
+            Coverage <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>{" "}
+          </Link>)
+      } else {
+        return (
+          <Link
+            id="covDenied"
+            to={`/editTransportationCheckList/${theTransportationCheckList.id}`}
+          >
+            Coverage denied <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>{" "}
+          </Link>)
       }
     } else {
       return (
-        <Link id="addClaimLink" to={`/addTransportationCheckList/${singleClaimView.claim_number}`}>Add RS</Link>
+        <Link
+          id="addClaimLink"
+          to={`/addTransportationCheckList/${singleClaimView.claim_number}`}
+        >
+          Add RS
+        </Link>
       );
     }
-    
   };
 
   //----- condition statement to render either Edit or add TransportationCheckList
 
   const renderLinkCarNotOnPolicy = () => {
+    console.log("CHECKLIST: ", theCarNotOnPolicyCheckList);
+    console.log("CLAIM: ", singleClaimView);
 
     if (
       theCarNotOnPolicyCheckList &&
       theCarNotOnPolicyCheckList.claim &&
       singleClaimView
     ) {
-      if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id) {
+      if (theCarNotOnPolicyCheckList.coverage_decision === null) {
         return (
-          <Link id="editClaimLink"
+          <Link
+            id="editClaimLink"
             to={`/editCarNotOnPolicyCheckList/${theCarNotOnPolicyCheckList.id}`}
           >
             Edit NOV <FontAwesomeIcon icon={faBan}></FontAwesomeIcon>
           </Link>
-      
         );
+      } else if (theCarNotOnPolicyCheckList.coverage_decision === true) {
+        return (
+          <Link
+            id="covClear"
+            to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}
+          >
+            Coverage NOV Confirmed<FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>{" "}
+          </Link>)
+      } else {
+        return (
+          <Link
+            id="covDenied"
+            to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}
+          >
+            Coverage denied <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>{" "}
+          </Link>)
       }
-    } else if (theCarNotOnPolicyCheckList && theCarNotOnPolicyCheckList.coverage_decision) {
-      if ( theCarNotOnPolicyCheckList.coverage_decision ===  true) {
-        return (<p>Coverage Extended NOV</p>)
-
-      }
-    }
-    
-    else {
+    } else {
       return (
         <Link
           id="addClaimLink"
@@ -122,10 +158,9 @@ const ClaimView = props => {
       );
     }
   };
-  
+
   // const denyCov = = () => {}
   const covNOV = () => {
-
     //testing to see if there is a carNotOnPolicy or transportation id will than link Add or edit display
     if (
       theCarNotOnPolicyCheckList &&
@@ -134,14 +169,11 @@ const ClaimView = props => {
     ) {
       if (theCarNotOnPolicyCheckList.claim.id === singleClaimView.id) {
         return (
-          <Alert color="info">
-            I am an alert and I can be dismissed!
-    </Alert>
-
+          <Alert color="info">I am an alert and I can be dismissed!</Alert>
         );
       }
     }
-  }
+  };
 
   return (
     <div id="body">
@@ -149,14 +181,12 @@ const ClaimView = props => {
       <Container>
         <Row id="cov-card1">
           <Col sm="3">
-            <div >
-              
-                <h5>Claim Task Line</h5>
-             
+            <div>
+              <h5 id="claimViewHeader">Claim Task Line</h5>
+
               <Row>
                 <Col>{renderLinkTransportation()}</Col>
                 <Col>{renderLinkCarNotOnPolicy()}</Col>
-                
               </Row>
             </div>
           </Col>
@@ -200,7 +230,7 @@ const ClaimView = props => {
                     singleClaimView.member.auto_1}
                 </p>
               </CardText>
-              <Button>Edit Member</Button>
+              <Button id="buttonClaimCard">Edit Member</Button>
             </Card>
           </Col>
           <Col sm="4">
@@ -222,7 +252,7 @@ const ClaimView = props => {
                   Vehicle:{singleClaimView && singleClaimView.claimant_auto}
                 </p>
               </CardText>
-              <Button>Edit Claimant</Button>
+              <Button id="buttonClaimCard">Edit Claimant</Button>
             </Card>
           </Col>
 
@@ -250,7 +280,7 @@ const ClaimView = props => {
                     singleClaimView.member &&
                     singleClaimView.member.pd_coverage}
                 </p>
-               
+
                 <p>
                   Driver: {singleClaimView && singleClaimView.claimant_name}{" "}
                   Rearended{" "}
@@ -262,7 +292,7 @@ const ClaimView = props => {
                     singleClaimView.member.member_name}
                 </p>
               </CardText>
-              <Button>Edit Liability</Button>
+              <Button id="buttonClaimCard">Edit Liability</Button>
             </Card>
           </Col>
         </Row>
@@ -325,7 +355,9 @@ const mapStateToProps = (state, props) => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, { updateClaim, fetchAllTransportationCheckList, fetchAllCarNotOnPolicyCheckLists })(
-    ClaimView
-  )
+  connect(mapStateToProps, {
+    updateClaim,
+    fetchAllTransportationCheckList,
+    fetchAllCarNotOnPolicyCheckLists
+  })(ClaimView)
 );
