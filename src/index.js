@@ -9,9 +9,11 @@ import store from "./store/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
-  
-    <Provider id="provider" store={store}>
+
+  <Provider store={store}>
+    <div id="provider" >
       <App />
+    </div>
     </Provider>
     , document.getElementById("root")
    

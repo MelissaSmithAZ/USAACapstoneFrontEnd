@@ -28,7 +28,7 @@ const AddTransportationCheckList = props => {
     const [theLetter, setTheLetter] = useState(false);
     const [theClaimantLetter, setTheClaimantLetter] = useState(false);
     const [theClaimantCall, setTheClaimantCall] = useState(false);
-    const [theCoverageDecision, setTheCoverageDecision] = useState(false);
+    const [theCoverageDecision, setTheCoverageDecision] = useState(null);
     const [theCallDoc, setTheCallDoc] = useState("");
     const [theClaimantCallDoc, setTheClaimantCallDoc] = useState("");
 

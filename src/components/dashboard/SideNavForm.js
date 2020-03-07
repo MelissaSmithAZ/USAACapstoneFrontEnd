@@ -37,10 +37,10 @@ const SideNavForm = props => {
         </NavItem>
         <p id="formContenttab">*Bill of Sale Daate must be:</p>
         <NavItem id="formContenttab">
-          <Link>Example Bill Of Sale</Link>
+          <Link id="linkFormTxtNav">Example Bill Of Sale</Link>
         </NavItem>
-        <NavItem>
-          <Link id="formContenttab">Policy Lanauge NOV</Link>
+        <NavItem id="formContenttab">
+          <Link id="linkFormTxtNav">Policy Lanauge NOV</Link>
           <p id="formContenttab">
             "Lorem ipsum , sed do eiusmod tempor incididunt ut labore et dolore
             magna aliqua. Laoreet id donec ultrices tincidunt arcu. Sit amet
@@ -59,11 +59,11 @@ const SideNavForm = props => {
         <p id="formContenttab">
           Question: Eget felis eget nunc lobortis mattis aliquam.?
         </p>
-        {/* <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orci a. Cursus </p>
+        <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orci a. Cursus </p>
                 <p id="formContenttab">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
                 <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc</p>
                 <p id="formContenttab">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
-                <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc.</p> */}
+                <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc.</p>
       </Nav>
     </div>
   );

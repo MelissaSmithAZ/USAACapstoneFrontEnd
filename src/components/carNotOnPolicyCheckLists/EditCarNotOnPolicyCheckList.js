@@ -29,7 +29,7 @@ const EditCarNotOnPolicyCheckList = props => {
   const [theClaimantCallDoc, setTheClaimantCallDoc] = useState("");
   const [theFinalLetterMember, setTheFinalLetterMember] = useState(false);
   const [theClaimantCall, setTheClaimantCall] = useState(false);
-  const [theCoverageDecision, setTheCoverageDecision] = useState(false);
+  const [theCoverageDecision, setTheCoverageDecision] = useState(null);
 
   const [theCarNotOnPolicyCheckList, setTheCarNotOnPolicyCheckList] = useState(
     {});
@@ -85,13 +85,13 @@ const EditCarNotOnPolicyCheckList = props => {
       <Form onSubmit={handleSubmit}>
 
       
-          <a href='https://www.google.com' target="_blank">None Owned Vehicle Procdure</a>
+              <a id="linkFormTxt" href='https://www.google.com' target="_blank">None Owned Vehicle Procdure</a>
 
         <FormGroup id="form">
           
          
             <FormGroup check id="form">
-              <Label check>
+              <Label check >
                 <Input
                   type="checkbox"
                   id="checkbox2"
@@ -104,11 +104,11 @@ const EditCarNotOnPolicyCheckList = props => {
             </FormGroup>
          
         </FormGroup>
-          <p>Call Doc must cover: </p>
-          <Link>* Advise of Coverage Issue</Link>
-          <p>* Phone number and name </p>
+              <p id="formTxt">Call Doc must cover:  * Advise of Coverage Issue
+           * Phone number and name</p>
+        
 
-        <FormGroup id="form">
+        <FormGroup id="form" row>
           <Label for="exampleText" >
             
           </Label>
@@ -164,15 +164,15 @@ const EditCarNotOnPolicyCheckList = props => {
             </FormGroup>
        
           </FormGroup>
-          
-          <FormGroup id="form">
+              <p id="formTxt">Call Doc must include: * Who was called * Phone number</p>
+
+          <FormGroup  row id="form">
             <Label for="exampleText" >
-              <p>Call Doc must include: * Who was called * Phone number</p>
             </Label>
            
             <Input
               type="textarea"
-              id="exampleText"
+                  id="exampleText"
               name="call_doc"
               value={theClaimantCallDoc}
               onChange={e => setTheClaimantCallDoc(e.target.value)}
@@ -182,8 +182,8 @@ const EditCarNotOnPolicyCheckList = props => {
 
   
         <FormGroup >
-          <Label for="checkbox2" sm={2}>
-            Initial Claimant Leter
+          <Label for="checkbox2">
+            Initial Claimant Letter
           </Label>
           
             <FormGroup check>
@@ -197,33 +197,35 @@ const EditCarNotOnPolicyCheckList = props => {
                     setTheFinalLetterMember(!theFinalLetterMember)
                   }
                 />{" "}
-                <Link>Send Decision Letter</Link>
+                    <Link id="linkFormTxt" >Send Decision Letter</Link>
               </Label>
             </FormGroup>
          
-        </FormGroup>
-        <FormGroup >
-          <Label for="exampleSelect" sm={2}>
-            Select
-          </Label>
-        
-            <Input
+              </FormGroup>
+              <p id="formTxt">Once all information received make final decision</p>
+
+
+              <FormGroup  row>
+                <Label for="exampleSelect" id="formTxt" >
+
+                </Label>
+
+                <Input
                   type="select"
                   id="exampleText"
                   name="coverage_decision"
-                 
                   onChange={e => setTheCoverageDecision(e.target.value)}
-            >
-                  <option id="exampleText" >choose Coverage Decision</option>
+                >
+                  <option id="exampleText">choose Coverage Decision</option>
                   <option id="exampleText" value={true}>Coverage Confirmed</option>
                   <option id="exampleText" value={false}>Coverage Denied</option>
-            </Input>
-         
-        </FormGroup>
+                </Input>
+
+              </FormGroup>
 
         <FormGroup check >
         
-            <Button>Submit</Button>
+            <Button id="buttonAddEdit">Submit</Button>
          
           </FormGroup>
        
