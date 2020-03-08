@@ -134,7 +134,7 @@ const ClaimView = props => {
         return (
           <Link
             id="covClear"
-            to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}
+            to={`/editCarNotOnPolicyCheckList/${theCarNotOnPolicyCheckList.id}`}
           >
             Coverage NOV Confirmed<FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>{" "}
           </Link>)
@@ -142,7 +142,7 @@ const ClaimView = props => {
         return (
           <Link
             id="covDenied"
-            to={`/addCarNotOnPolicyCheckList/${singleClaimView.claim_number}`}
+            to={`/editCarNotOnPolicyCheckList/${theCarNotOnPolicyCheckList.id}`}
           >
             Coverage denied <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>{" "}
           </Link>)

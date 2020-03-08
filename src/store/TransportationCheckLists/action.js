@@ -63,7 +63,7 @@ export const updateTransportationCheckList = (
   updatedTransportationCheckList , props
 ) => async dispatch => {
   console.log(
-    "UPDATED TransportationCheckList ACTION",
+    "***UPDATED TransportationCheckList ACTION",
     updatedTransportationCheckList
   );
   //give me an object that has everything other than pets that is called cust
@@ -77,6 +77,7 @@ export const updateTransportationCheckList = (
       BASE_URL + `/${updatedTransportationCheckList.claim_id}`,
       updatedTransportationCheckList
     );
+   
     dispatch({
       type: types.UPDATE_TRANSPORTATIONCHECKLIST_SUCCESS,
       payload: response.data

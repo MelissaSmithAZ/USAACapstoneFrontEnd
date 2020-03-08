@@ -26,13 +26,7 @@ const EditTransportationCheckList = props => {
   const [theClaimantCallDoc, setTheClaimantCallDoc] = useState("");
 
   const [theTransportationCheckList, setTheTransportationCheckList] = useState({
-    // call: false,
-    // call_doc: "",
-    // letter: false,
-    // claimant_letter: false,
-    // claimant_call: false,
-    // claimant_call_doc: "",
-    // coverage_decision: false,
+   
   });
 
   const transportationCheckList = useSelector(
@@ -81,7 +75,7 @@ const EditTransportationCheckList = props => {
       "theTransporationCheckList claim_id",
       theTransportationCheckList.claim_id
     );
-    console.log("singleClaimView id", singleClaimView);
+    console.log("@@@singleClaimView id", singleClaimView.claim_number);
     console.log("TRANSPORTATION id", transportationCheckList);
     console.log("**THE TRANSPORTATION id", theTransportationCheckList);
     //   console.log("Claim id", claim.id)
@@ -145,7 +139,7 @@ const EditTransportationCheckList = props => {
                         checked={theLetter}
                         onChange={() => setTheLetter(!theLetter)}
                       />{" "}
-                    <Link id="linkFormTxt" >Send Member Leter</Link>
+                    <Link id="linkFormTxt"  >Send Member Leter</Link>
                     </Label>
                   </FormGroup>
             
@@ -202,7 +196,7 @@ const EditTransportationCheckList = props => {
                           setTheClaimantLetter(!theClaimantLetter)
                         }
                       />{" "}
-                    <Link id="linkFormTxt">Send Claimant Leter</Link>
+                    <Link id="linkFormTxt" to={`/ClaimantLetter/${singleClaimView.claim_number}`}>Send Claimant Leter</Link>
                     </Label>
                   </FormGroup>
                

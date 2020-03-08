@@ -238,3 +238,24 @@ font-weight: bold;
 #buttonAddEdit {
   margin-bottom: 5%;
 }
+
+#letterAddress {
+  text-align: left;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top:8%
+}
+#cardLetter {
+  display:flex;
+  width: 600px;
+ margin-left: 25%;
+}
+
+ #lastParagraph {
+  text-align: left;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top:8%
+
+ }
+

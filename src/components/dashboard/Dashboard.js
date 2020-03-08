@@ -14,7 +14,7 @@ const Dashboard = () => {
     {/* <Container> */}
       <Navbar id="nav">
         <Navbar.Collapse>
-          <Navbar.Brand href="#home">Claims Prosessing</Navbar.Brand>
+          <Navbar.Brand href="#home">Claims Processing</Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-center">

@@ -197,7 +197,7 @@ const EditCarNotOnPolicyCheckList = props => {
                     setTheFinalLetterMember(!theFinalLetterMember)
                   }
                 />{" "}
-                    <Link id="linkFormTxt" >Send Decision Letter</Link>
+                    <Link id="linkFormTxt" to={`/MemberDenialLetter/${theCarNotOnPolicyCheckList.id}`} >Send Decision Letter</Link>
               </Label>
             </FormGroup>
          
