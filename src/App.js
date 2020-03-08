@@ -23,6 +23,9 @@ import EditCoverageCheckList from "./components/coverageCheckLists/EditCoverageC
 import AddTransportationCheckList from "./components/transportationCheckLists/AddTransportationCheckList";
 import EditTransportationCheckList from "./components/transportationCheckLists/EditTransportationCheckList";
 import ClaimView from "./components/claimView/ClaimView";
+import SampleLetter from "./components/sampleLetter/MemberDenialLetter";
+import MemberDenialLetter from './components/sampleLetter/MemberDenialLetter';
+import ClaimantLetter from './components/sampleLetter/ClaimantLetter';
 
 
 
@@ -50,6 +53,8 @@ const App = props => {
           <Route path="/addTransportationCheckList/:id" component={AddTransportationCheckList} />
           <Route path="/editCarNotOnPolicyCheckList/:id" component={EditCarNotOnPolicyCheckList} />
           <Route path="/addCarNotOnPolicyCheckList/:id" component={AddCarNotOnPolicyCheckList} />
+          <Route path="/MemberDenialLetter/:id" component={MemberDenialLetter} />
+          <Route path="/ClaimantLetter/:id" component={ClaimantLetter} />
 
           
           {/* <Route path="" component={AddCarNotOnPolicyCheckList} />
