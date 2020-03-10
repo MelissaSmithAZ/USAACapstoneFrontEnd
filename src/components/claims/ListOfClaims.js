@@ -52,8 +52,8 @@ const ListOfClaims = props => {
 //     props.removeClaim(claim.id)
 //   }
     return (
-      <div id="listBackground">
-        <Container id='claimsList'>
+    <div >
+        <Container >
         <Table striped hover >
           <thead >
               <tr>

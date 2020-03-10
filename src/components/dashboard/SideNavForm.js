@@ -60,10 +60,10 @@ const SideNavForm = props => {
           Question: Eget felis eget nunc lobortis mattis aliquam.?
         </p>
         <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orci a. Cursus </p>
-                <p id="formContenttab">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
+                {/* <p id="formContenttab">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
                 <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc</p>
                 <p id="formContenttab">Question: Eget felis eget nunc lobortis mattis aliquam.?</p>
-                <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc.</p>
+                <p id="formContenttab">Answer: Arcu cursus euismod quis viverra nibh cras pulvinar mattis nunc. Sollicitudin aliquam ultrices sagittis orc.</p> */}
       </Nav>
     </div>
   );

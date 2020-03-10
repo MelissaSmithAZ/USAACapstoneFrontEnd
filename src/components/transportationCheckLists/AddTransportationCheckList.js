@@ -127,7 +127,7 @@ const AddTransportationCheckList = props => {
                                                 checked={theLetter}
                                                 onChange={() => setTheLetter(!theLetter)}
                                             />{" "}
-                                            <Link id="linkFormTxt" to={`/MemberDenialLetter/${singleClaimView.claim_number}`}>Send Member Leter</Link>
+                                            <Link id="linkFormTxt" >Send Member Leter</Link>
                                         </Label>
                                     </FormGroup>
 
@@ -185,7 +185,7 @@ const AddTransportationCheckList = props => {
                                                 }
                                             />{" "}
                                             <Link id="linkFormTxt"
-                                                to={`/ClaimantLetter/${singleClaimView.claim_number}`}>Send Claimant Leter</Link>
+                                                >Send Claimant Leter</Link>
                                         </Label>
                                     </FormGroup>
 
